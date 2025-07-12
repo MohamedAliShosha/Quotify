@@ -19,7 +19,7 @@ class CustomButton extends StatelessWidget {
         child: GestureDetector(
           onTap: () {},
           child: const Text(
-            'Let\'s Go',
+            'Get Started',
             style: TextStyle(
               color: ColorsManager.kWhiteColor,
               fontSize: 24,
