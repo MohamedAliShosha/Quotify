@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
+import 'package:starter_template/features/OnBoarding/presentation/widgets/custom_animated_opacity.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
@@ -82,29 +83,6 @@ class _OnBoardingViewState extends State<OnBoardingView> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class CustomAnimatedOpacity extends StatelessWidget {
-  const CustomAnimatedOpacity(
-      {super.key,
-      required this.isVisible,
-      required this.durationInSeconds,
-      required this.child});
-
-  final bool isVisible;
-  final Widget? child;
-  final int? durationInSeconds;
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: isVisible ? 1.0 : 0.0,
-      duration: Duration(
-        seconds: durationInSeconds ?? 0,
-      ),
-      child: child, // GestureDetector for the last one
     );
   }
 }
