@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FlutterStarterTemplate extends StatelessWidget {
-  const FlutterStarterTemplate({super.key});
+class QuotesApp extends StatelessWidget {
+  const QuotesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,5 +12,5 @@ class FlutterStarterTemplate extends StatelessWidget {
 }
 
 void main() {
-  runApp(const FlutterStarterTemplate());
+  runApp(const QuotesApp());
 }
