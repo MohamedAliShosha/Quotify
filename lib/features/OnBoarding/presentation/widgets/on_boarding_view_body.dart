@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/features/OnBoarding/presentation/widgets/custom_animated_opacity.dart';
@@ -63,8 +65,9 @@ class OnboardingViewBody extends StatelessWidget {
           CustomAnimatedOpacity(
             isVisible: _isVisible,
             durationInSeconds: 3,
-            child: const CustomButton(
+            child:  CustomButton(
               buttonTitle: 'Get Started',
+              onTap: () => GoRouter.of(context).push(AppRouter.kSignInView),
             ),
           ),
           const SizedBox(

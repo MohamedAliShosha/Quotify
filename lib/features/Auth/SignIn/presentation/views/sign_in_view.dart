@@ -6,16 +6,15 @@ import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/core/widgets/custom_email_and_password_text_form_field.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignInView extends StatefulWidget {
+  const SignInView({super.key});
 
-  static String id = 'LoginPage';
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignInView> createState() => _SignInViewState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignInViewState extends State<SignInView> {
   bool isLoading = false;
   String? email, password;
   GlobalKey<FormState> formKey = GlobalKey();
