@@ -5,26 +5,28 @@ import 'package:starter_template/core/functions/show_snack_bar.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/core/widgets/custom_email_and_password_text_form_field.dart';
+import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custom_header_text.dart';
+import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custom_redirect_button.dart';
+import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custom_redirect_text.dart';
+import 'package:starter_template/features/Auth/services/sign_in_service.dart';
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
-
 
   @override
   State<SignInView> createState() => _SignInViewState();
 }
 
 class _SignInViewState extends State<SignInView> {
-  bool isLoading = false;
+  bool isLoading = false; // This is a default value
   String? email, password;
   GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
-      progressIndicator: const CircularProgressIndicator(
-        color: ColorsManager.kPrimaryColor
-      ),
+      progressIndicator:
+          const CircularProgressIndicator(color: ColorsManager.kPrimaryColor),
       inAsyncCall: isLoading,
       child: Scaffold(
         backgroundColor: ColorsManager.kBlackColor,
@@ -32,60 +34,57 @@ class _SignInViewState extends State<SignInView> {
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
             key: formKey,
-            child: ListView(
-              children: [
-                const SizedBox(
-                  height: 200,
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 8),
-                  child: Text(
-                    'Hello,',
-                    style: TextStyle(fontSize: 20, fontFamily: 'Lato'),
+            child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(
+                    height: 200,
                   ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 8),
-                  child: Text(
-                    'Welcome Back!',
-                    style: TextStyle(fontSize: 24, fontFamily: 'Lato'),
+                  const CustomHeaderText(
+                    text: 'Hello,',
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CustomEmailAndPasswordTextFormField(
-                  labelText: 'Enter your email',
-                  onChanged: (data) {
-                    email = data;
-                  },
-                  hintText: 'Email',
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                CustomEmailAndPasswordTextFormField(
-                  labelText: 'Enter your password',
-                  obscuredText: true,
-                  onChanged: (data) {
-                    password = data;
-                  },
-                  hintText: 'Password',
-                ),
-                const SizedBox(
-                  height: 100,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    
-                  },
-                  child: CustomButton(
+                  const CustomHeaderText(
+                    text: 'Welcome Back!',
+                    fontSize: 24,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomEmailAndPasswordTextFormField(
+                    labelText: 'Enter your email',
+                    onChanged: (data) {
+                      email = data;
+                    },
+                    hintText: 'Email',
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  CustomEmailAndPasswordTextFormField(
+                    labelText: 'Enter your password',
+                    obscuredText:
+                        true, // changing the value of the obsecureText to true
+                    onChanged: (data) {
+                      password = data;
+                    },
+                    hintText: 'Password',
+                  ),
+                  const SizedBox(
+                    height: 100,
+                  ),
+                  CustomButton(
                     onTap: () async {
                       if (formKey.currentState!.validate()) {
                         isLoading = true;
                         setState(() {});
                         try {
-                          await loginUser();
+                          await loginUser(
+                              context: context,
+                              email: email,
+                              password: password);
                           // ignore: use_build_context_synchronously
                           // Navigator.pushNamed(context, HomeView.id,
                           //     arguments:
@@ -103,52 +102,33 @@ class _SignInViewState extends State<SignInView> {
                                 'wrong password provided for that user.');
                           }
                         } catch (e) {
-                          print(e);
                           showSnackBar(
                               context, 'there was an error: ${e.toString()}');
                         }
                         isLoading = false;
                         setState(() {});
-                      } else {}
+                      }
                     },
                     buttonTitle: 'Login',
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'don\'t have an account ? ',
-                      style: TextStyle(
-                        color: Colors.black,
+                  const SizedBox(height: 10),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomRedirectText(
+                        redirectText: 'don\'t have an account ? ',
                       ),
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        // Navigator.pushNamed(context, RegisterPage.id);
-                      },
-                      child: const Text(
-                        'Register',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
+                      CustomRedirectButton(
+                        redirectText: 'Register',
                       ),
-                    ),
-                  ],
-                )
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
       ),
     );
-  }
-
-  Future<void> loginUser() async {
-    UserCredential user = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email!, password: password!);
   }
 }

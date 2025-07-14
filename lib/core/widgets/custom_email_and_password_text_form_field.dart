@@ -40,8 +40,8 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
           hintStyle: const TextStyle(
             color: ColorsManager.kBlackColor,
           ),
-          enabledBorder: buildEnabledBorder(color: ColorsManager.kBlackColor),
-          focusedBorder: buildFocusedBorder(color: ColorsManager.kBlackColor),
+          enabledBorder: buildEnabledBorder(color: ColorsManager.kPrimaryColor),
+          focusedBorder: buildFocusedBorder(color: ColorsManager.kPrimaryColor),
         ),
       ),
     );

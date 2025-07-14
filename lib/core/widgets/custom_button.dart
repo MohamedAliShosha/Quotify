@@ -3,7 +3,9 @@ import 'package:starter_template/core/utils/colors_manager.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    super.key, required this.buttonTitle, this.onTap,
+    super.key,
+    required this.buttonTitle,
+    this.onTap,
   });
 
   final String buttonTitle;
@@ -11,22 +13,23 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        color: ColorsManager.kPrimaryColor,
-      ),
-      // width: 60,
-      height: 60,
-      child: Center(
-        child: GestureDetector(
-          onTap: onTap,
-          child:  Text(
-            buttonTitle,
-            style: const TextStyle(
-              color: ColorsManager.kBlackColor,
-              fontSize: 24,
-              fontWeight: FontWeight.bold
+    return Padding(
+      padding: const EdgeInsets.only(right: 24, left: 24),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          color: ColorsManager.kPrimaryColor,
+        ),
+        height: 60,
+        child: Center(
+          child: GestureDetector(
+            onTap: onTap,
+            child: Text(
+              buttonTitle,
+              style: const TextStyle(
+                  color: ColorsManager.kBlackColor,
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ),
