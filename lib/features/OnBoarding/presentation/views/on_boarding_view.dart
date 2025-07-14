@@ -26,7 +26,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsManager.kPrimaryColor,
+      backgroundColor: ColorsManager.kBlackColor,
       body: OnboardingViewBody(isVisible: _isVisible),
     );
   }

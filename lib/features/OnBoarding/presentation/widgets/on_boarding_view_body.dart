@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/features/OnBoarding/presentation/widgets/custom_animated_opacity.dart';
 
@@ -38,6 +39,8 @@ class OnboardingViewBody extends StatelessWidget {
               style: TextStyle(
                 height: .5,
                 fontSize: 50,
+                color: ColorsManager.kPrimaryColor,
+                
               ),
             ),
           ),
@@ -47,6 +50,7 @@ class OnboardingViewBody extends StatelessWidget {
             child: const Text(
               'Inspired',
               style: TextStyle(
+                color: ColorsManager.kPrimaryColor,
                 fontSize: 50, // responsive font size
                 fontWeight: FontWeight.bold,
               ),
@@ -59,7 +63,9 @@ class OnboardingViewBody extends StatelessWidget {
           CustomAnimatedOpacity(
             isVisible: _isVisible,
             durationInSeconds: 3,
-            child: const CustomButton(),
+            child: const CustomButton(
+              buttonTitle: 'Get Started',
+            ),
           ),
           const SizedBox(
             height: 100,
