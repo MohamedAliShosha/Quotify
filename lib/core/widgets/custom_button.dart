@@ -3,10 +3,11 @@ import 'package:starter_template/core/utils/colors_manager.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    super.key, required this.buttonTitle,
+    super.key, required this.buttonTitle, this.onTap,
   });
 
   final String buttonTitle;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class CustomButton extends StatelessWidget {
       height: 60,
       child: Center(
         child: GestureDetector(
-          onTap: () {},
+          onTap: onTap,
           child:  Text(
             buttonTitle,
             style: const TextStyle(
