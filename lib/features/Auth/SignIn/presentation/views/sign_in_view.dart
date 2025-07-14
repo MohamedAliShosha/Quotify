@@ -77,8 +77,10 @@ class _SignInViewState extends State<SignInView> {
                   ),
                   CustomButton(
                     onTap: () async {
+                      // Checks if all form fields (email and password) pass their validation rules.
                       if (formKey.currentState!.validate()) {
-                        isLoading = true;
+                        isLoading =
+                            true; // Shows a loading indicator while processing the login request.
                         setState(() {});
                         try {
                           await loginUser(
@@ -86,9 +88,6 @@ class _SignInViewState extends State<SignInView> {
                               email: email,
                               password: password);
                           // ignore: use_build_context_synchronously
-                          // Navigator.pushNamed(context, HomeView.id,
-                          //     arguments:
-                          //         email); // Arguments are data passed to the next page
                         } on FirebaseAuthException catch (e) {
                           // ScaffoldMessenger => used to display a message that express the registeration result fail or success
                           if (e.code == 'user-not-found') {
@@ -105,7 +104,8 @@ class _SignInViewState extends State<SignInView> {
                           showSnackBar(
                               context, 'there was an error: ${e.toString()}');
                         }
-                        isLoading = false;
+                        isLoading =
+                            false; // Hides the loading indicator after the login attempt completes (whether successful or not).
                         setState(() {});
                       }
                     },
