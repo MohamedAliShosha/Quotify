@@ -32,6 +32,11 @@ dependencies:
   flutter:
     sdk: flutter
   go_router: 
+  firebase_app_check:
+  firebase_auth: 
+  firebase_core: 
+   
+  
 
 dev_dependencies:
 
