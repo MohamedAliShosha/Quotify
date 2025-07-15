@@ -31,7 +31,7 @@ class _SignInViewState extends State<SignInView> {
           const CircularProgressIndicator(color: ColorsManager.kPrimaryColor),
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: ColorsManager.kBlackColor,
+        
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
@@ -89,6 +89,7 @@ class _SignInViewState extends State<SignInView> {
                               context: context,
                               email: email,
                               password: password);
+                              GoRouter.of(context).push(AppRouter.kQuotesView);
                           // ignore: use_build_context_synchronously
                         } on FirebaseAuthException catch (e) {
                           // ScaffoldMessenger => used to display a message that express the registeration result fail or success

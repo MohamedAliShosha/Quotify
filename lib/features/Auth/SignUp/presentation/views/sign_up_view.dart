@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:starter_template/core/functions/show_snack_bar.dart';
+import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/core/widgets/custom_email_and_password_text_form_field.dart';
@@ -31,11 +33,11 @@ class _SignUpViewState extends State<SignUpView> {
   Widget build(BuildContext context) {
     return ModalProgressHUD(
       progressIndicator: const CircularProgressIndicator(
-        color: Colors.black,
+        color: ColorsManager.kPrimaryColor,
       ),
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: ColorsManager.kBlackColor,
+        
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
@@ -95,6 +97,7 @@ class _SignUpViewState extends State<SignUpView> {
                               context: context,
                               email: email,
                               password: password);
+                              GoRouter.of(context).push(AppRouter.kQuotesView);
                           // ignore: use_build_context_synchronously
                         } on FirebaseAuthException catch (e) {
                           // ScaffoldMessenger => used to display a message that express the registeration result fail or success

@@ -36,12 +36,13 @@ class OnboardingViewBody extends StatelessWidget {
           CustomAnimatedOpacity(
             isVisible: _isVisible,
             durationInSeconds: 2,
-            child: const Text(
+            child:  const Text(
               'Get',
               style: TextStyle(
                 height: .5,
                 fontSize: 50,
                 color: ColorsManager.kPrimaryColor,
+                fontWeight: FontWeight.bold,
                 
               ),
             ),
@@ -49,7 +50,7 @@ class OnboardingViewBody extends StatelessWidget {
           CustomAnimatedOpacity(
             isVisible: _isVisible,
             durationInSeconds: 3,
-            child: const Text(
+            child:  const Text(
               'Inspired',
               style: TextStyle(
                 color: ColorsManager.kPrimaryColor,

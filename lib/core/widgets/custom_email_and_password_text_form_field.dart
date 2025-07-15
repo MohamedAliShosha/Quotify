@@ -22,7 +22,10 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: TextFormField(
-        cursorColor: Colors.black,
+        style: const TextStyle(
+          color: ColorsManager.kWhiteColor,
+        ),
+        cursorColor: ColorsManager.kWhiteColor,
         obscureText: obscuredText!,
         // Text form field contains validator that used to validate inputs
         validator: (data) {
@@ -34,8 +37,9 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
         },
         onChanged: onChanged,
         decoration: InputDecoration(
+          
           labelText: labelText,
-          labelStyle: const TextStyle(fontSize: 16, color: Colors.grey),
+          labelStyle: const TextStyle(fontSize: 16, color: ColorsManager.kGreyColor),
           hintText: hintText,
           hintStyle: const TextStyle(
             color: ColorsManager.kBlackColor,

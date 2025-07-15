@@ -7,14 +7,12 @@ class CustomHeaderText extends StatelessWidget {
     required this.text,
     this.padding = const EdgeInsets.only(left: 8),
     this.fontSize = 20,
-    this.fontFamily = 'Lato',
     this.color = ColorsManager.kPrimaryColor,
   });
 
   final String text;
   final EdgeInsetsGeometry padding;
   final double fontSize;
-  final String fontFamily;
   final Color color;
 
   @override
@@ -25,7 +23,6 @@ class CustomHeaderText extends StatelessWidget {
         text,
         style: TextStyle(
           fontSize: fontSize,
-          fontFamily: 'Lato',
           color: color,
         ),
       ),
