@@ -21,6 +21,7 @@ class SignInView extends StatefulWidget {
 
 class _SignInViewState extends State<SignInView> {
   bool isLoading = false; // This is a default value
+  bool isPasswordVisible = false;
   String? email, password;
   GlobalKey<FormState> formKey = GlobalKey();
 
@@ -31,7 +32,6 @@ class _SignInViewState extends State<SignInView> {
           const CircularProgressIndicator(color: ColorsManager.kPrimaryColor),
       inAsyncCall: isLoading,
       child: Scaffold(
-        
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
@@ -66,9 +66,20 @@ class _SignInViewState extends State<SignInView> {
                     height: 20,
                   ),
                   CustomEmailAndPasswordTextFormField(
+                    suffixIcon: IconButton(
+                      color: ColorsManager.kPrimaryColor,
+                      onPressed: () {
+                        setState(() {
+                          isPasswordVisible = !isPasswordVisible;
+                        });
+                      },
+                      icon: isPasswordVisible
+                          ? const Icon(Icons.visibility)
+                          : const Icon(Icons.visibility_off),
+                    ),
                     labelText: 'Enter your password',
                     obscuredText:
-                        true, // changing the value of the obsecureText to true
+                        !isPasswordVisible, // changing the value of the obsecureText to true
                     onChanged: (data) {
                       password = data;
                     },
@@ -89,7 +100,7 @@ class _SignInViewState extends State<SignInView> {
                               context: context,
                               email: email,
                               password: password);
-                              GoRouter.of(context).push(AppRouter.kQuotesView);
+                          GoRouter.of(context).push(AppRouter.kHomeView);
                           // ignore: use_build_context_synchronously
                         } on FirebaseAuthException catch (e) {
                           // ScaffoldMessenger => used to display a message that express the registeration result fail or success
@@ -115,7 +126,7 @@ class _SignInViewState extends State<SignInView> {
                     buttonTitle: 'Sign In',
                   ),
                   const SizedBox(height: 10),
-                   Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const CustomRedirectText(

@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:starter_template/features/Auth/SignIn/presentation/views/sign_in_view.dart';
 import 'package:starter_template/features/Auth/SignUp/presentation/views/sign_up_view.dart';
 import 'package:starter_template/features/OnBoarding/presentation/views/on_boarding_view.dart';
-import 'package:starter_template/features/Quotes/presentation/views/quotes_view.dart';
+import 'package:starter_template/features/Home/presentation/views/home_view.dart';
 
 abstract class AppRouter {
   // The first thing when creating routers is declaring routes variables
@@ -10,6 +10,7 @@ abstract class AppRouter {
   static const kSignUpView = '/signUpView';
   static const onBoardingView = '/onBoardingView';
   static const kQuotesView = '/quotesView';
+  static const kHomeView = '/homeView';
   static const kProfileView = '/profileView';
 
   // Then creating the router variable that = GoRouter"Contains a list of routes"
@@ -34,9 +35,9 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: '/quotesView',
+        path: '/homeView',
         builder: (context, state) {
-          return const QuotesView();
+          return const HomeView();
         },
       )
     ],

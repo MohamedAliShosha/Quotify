@@ -10,18 +10,20 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
       this.onChanged,
       this.hintText,
       this.obscuredText = false,
-      required this.labelText});
+      required this.labelText, this.suffixIcon});
 
   final String labelText;
   Function(String)? onChanged;
   String? hintText;
   bool? obscuredText; // I gave  it a default value of false
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: TextFormField(
+        
         style: const TextStyle(
           color: ColorsManager.kWhiteColor,
         ),
@@ -37,7 +39,7 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
         },
         onChanged: onChanged,
         decoration: InputDecoration(
-          
+          suffixIcon: suffixIcon,
           labelText: labelText,
           labelStyle: const TextStyle(fontSize: 16, color: ColorsManager.kGreyColor),
           hintText: hintText,

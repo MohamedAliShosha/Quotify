@@ -27,6 +27,9 @@ class _SignUpViewState extends State<SignUpView> {
 
   bool isLoading = false;
 
+  bool isPasswordVisible =
+      false; // A default value that makes the password unvisible
+
   GlobalKey<FormState> formKey = GlobalKey();
 
   @override
@@ -37,7 +40,6 @@ class _SignUpViewState extends State<SignUpView> {
       ),
       inAsyncCall: isLoading,
       child: Scaffold(
-        
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
@@ -54,7 +56,6 @@ class _SignUpViewState extends State<SignUpView> {
                   ),
                   const CustomHeaderText(
                     text: 'Hello,',
-                    
                   ),
                   const CustomHeaderText(
                     text: 'Welcome to Quote!',
@@ -74,9 +75,24 @@ class _SignUpViewState extends State<SignUpView> {
                     height: 20,
                   ),
                   CustomEmailAndPasswordTextFormField(
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          // if the isPasswordVisible was "false" it will be "true" and vice versa
+                          isPasswordVisible = !isPasswordVisible; 
+                        });
+                      },
+                      // Check if the isPasswordVisible is true display Icons.visibility else display Icons.visibility_off
+                      icon: Icon(
+                        isPasswordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: ColorsManager.kPrimaryColor,
+                      ),
+                    ),
                     labelText: 'Enter your password',
                     obscuredText:
-                        true, // changing the value of the obsecureText to true
+                        !isPasswordVisible, // If the isPasswordVisible is true it will be false and the password is hidden 
                     onChanged: (data) {
                       password = data;
                     },
@@ -97,7 +113,7 @@ class _SignUpViewState extends State<SignUpView> {
                               context: context,
                               email: email,
                               password: password);
-                              GoRouter.of(context).push(AppRouter.kQuotesView);
+                          GoRouter.of(context).push(AppRouter.kHomeView);
                           // ignore: use_build_context_synchronously
                         } on FirebaseAuthException catch (e) {
                           // ScaffoldMessenger => used to display a message that express the registeration result fail or success
@@ -108,8 +124,7 @@ class _SignUpViewState extends State<SignUpView> {
                                 'Weak password');
                           } else if (e.code == 'email-already-in-use') {
                             // ignore: use_build_context_synchronously
-                            showSnackBar(context,
-                                'email already in use.');
+                            showSnackBar(context, 'email already in use.');
                           }
                         } catch (e) {
                           showSnackBar(
@@ -123,7 +138,7 @@ class _SignUpViewState extends State<SignUpView> {
                     buttonTitle: 'Sign Up',
                   ),
                   const SizedBox(height: 10),
-                   Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const CustomRedirectText(
@@ -140,12 +155,9 @@ class _SignUpViewState extends State<SignUpView> {
                 ],
               ),
             ),
-            
           ),
         ),
       ),
     );
   }
-
-  
 }
