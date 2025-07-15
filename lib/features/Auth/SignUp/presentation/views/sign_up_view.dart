@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:starter_template/core/functions/show_snack_bar.dart';
-import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/core/widgets/custom_email_and_password_text_form_field.dart';
@@ -12,30 +10,37 @@ import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custo
 import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custom_redirect_text.dart';
 import 'package:starter_template/features/Auth/services/sign_in_service.dart';
 
-class SignInView extends StatefulWidget {
-  const SignInView({super.key});
+// ignore: must_be_immutable
+class SignUpView extends StatefulWidget {
+  const SignUpView({super.key});
 
   @override
-  State<SignInView> createState() => _SignInViewState();
+  State<SignUpView> createState() => _SignUpViewState();
 }
 
-class _SignInViewState extends State<SignInView> {
-  bool isLoading = false; // This is a default value
-  String? email, password;
+class _SignUpViewState extends State<SignUpView> {
+  String? email;
+
+  String? password;
+
+  bool isLoading = false;
+
   GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
     return ModalProgressHUD(
-      progressIndicator:
-          const CircularProgressIndicator(color: ColorsManager.kPrimaryColor),
+      progressIndicator: const CircularProgressIndicator(
+        color: Colors.black,
+      ),
       inAsyncCall: isLoading,
       child: Scaffold(
         backgroundColor: ColorsManager.kBlackColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
-            key: formKey,
+            key:
+                formKey, // Is a key for the Form widget enable me to access whatever inside the Form widgwt
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Column(
@@ -47,9 +52,10 @@ class _SignInViewState extends State<SignInView> {
                   ),
                   const CustomHeaderText(
                     text: 'Hello,',
+                    
                   ),
                   const CustomHeaderText(
-                    text: 'Welcome Back!',
+                    text: 'Welcome to Quote!',
                     fontSize: 24,
                   ),
                   const SizedBox(
@@ -85,22 +91,22 @@ class _SignInViewState extends State<SignInView> {
                             true; // Shows a loading indicator while processing the login request.
                         setState(() {});
                         try {
-                          await AuthServices.loginUser(
+                          await AuthServices.signUpUser(
                               context: context,
                               email: email,
                               password: password);
                           // ignore: use_build_context_synchronously
                         } on FirebaseAuthException catch (e) {
                           // ScaffoldMessenger => used to display a message that express the registeration result fail or success
-                          if (e.code == 'user-not-found') {
+                          if (e.code == 'weak-password') {
                             showSnackBar(
                                 // ignore: use_build_context_synchronously
                                 context,
-                                'No user found for that email.');
-                          } else if (e.code == '-wrong-password') {
+                                'Weak password');
+                          } else if (e.code == 'email-already-in-use') {
                             // ignore: use_build_context_synchronously
                             showSnackBar(context,
-                                'wrong password provided for that user.');
+                                'email already in use.');
                           }
                         } catch (e) {
                           showSnackBar(
@@ -111,29 +117,32 @@ class _SignInViewState extends State<SignInView> {
                         setState(() {});
                       }
                     },
-                    buttonTitle: 'Sign In',
+                    buttonTitle: 'Sign Up',
                   ),
                   const SizedBox(height: 10),
                    Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const CustomRedirectText(
-                        redirectText: 'don\'t have an account? ',
+                        redirectText: 'Already have an account? ',
                       ),
                       CustomRedirectButton(
                         onTap: () {
-                          GoRouter.of(context).push(AppRouter.kSignUpView);
+                          Navigator.pop(context);
                         },
-                        redirectText: 'Sign Up',
+                        redirectText: 'Sign In',
                       ),
                     ],
                   ),
                 ],
               ),
             ),
+            
           ),
         ),
       ),
     );
   }
+
+  
 }

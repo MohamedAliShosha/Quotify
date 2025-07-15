@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:starter_template/features/Auth/SignIn/presentation/views/sign_in_view.dart';
+import 'package:starter_template/features/Auth/SignUp/presentation/views/sign_up_view.dart';
 import 'package:starter_template/features/OnBoarding/presentation/views/on_boarding_view.dart';
 
 abstract class AppRouter {
@@ -23,6 +24,12 @@ abstract class AppRouter {
         path: '/signInView',
         builder: (context, state) {
           return const SignInView();
+        },
+      ),
+      GoRoute(
+        path: '/signUpView',
+        builder: (context, state) {
+          return const SignUpView();
         },
       )
     ],
