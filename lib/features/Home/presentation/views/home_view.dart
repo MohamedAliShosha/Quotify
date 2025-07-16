@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
+import 'package:starter_template/features/Home/presentation/widgets/custom_elevated_button.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -61,34 +62,5 @@ class HomeView extends StatelessWidget {
   }
 }
 
-class CustomElevatedButton extends StatelessWidget {
-  const CustomElevatedButton({
-    super.key,
-  });
 
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        // Log event when button is pressed
-        // Navigator.pushNamed(context, QuotesView.id);
-      },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: ColorsManager.kPrimaryColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
-        ),
-        padding:
-            const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-      ),
-      child: const Text(
-        'Explore Quotes',
-        style: TextStyle(
-          color: ColorsManager.kBlackColor,
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-    );
-  }
-}
+
