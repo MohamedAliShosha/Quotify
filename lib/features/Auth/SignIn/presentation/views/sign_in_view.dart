@@ -7,8 +7,8 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      // Move the bloc provider from here to the SignInView that exists in AppRouter for better arch 
-      body:  SignInViewBody(),
+      // Move the bloc provider from here to the SignInView that exists in AppRouter for better arch
+      body: SignInViewBody(),
     );
   }
 }

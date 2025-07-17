@@ -11,8 +11,8 @@ class QuotesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData(
-        fontFamily: 'Lato',
         scaffoldBackgroundColor: ColorsManager.kBlackColor,
+        fontFamily: 'Lato',
       ),
       routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
