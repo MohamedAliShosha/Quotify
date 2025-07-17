@@ -96,7 +96,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                         ),
                         labelText: 'Enter your password',
                         obscuredText:
-                            !isPasswordVisible, // changing the value of the obsecureText to true
+                            !isPasswordVisible, // changing the value of the obscureText to true
                         onChanged: (data) {
                           password = data;
                         },
