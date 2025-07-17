@@ -1,6 +1,8 @@
 import 'package:get_it/get_it.dart';
+import 'package:starter_template/features/Auth/SignIn/data/repos/Sign_Up_Repos/sign_up_repo_implement.dart';
 import 'package:starter_template/features/Auth/SignIn/data/repos/sign_in_repo_implement.dart';
 import 'package:starter_template/features/Auth/SignIn/presentation/manager/Sign_In_cubit/sign_in_cubit.dart';
+import 'package:starter_template/features/Auth/SignUp/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 
 //  Create a global instance of GetIt to be used throughout the app
 final getIt = GetIt.instance;
@@ -12,6 +14,7 @@ void setUpServiceLocator() {
     - One instance is enough for the whole app
   */
   getIt.registerSingleton<SignInRepoImplement>(SignInRepoImplement());
+  getIt.registerSingleton<SignUpRepoImplement>(SignUpRepoImplement());
 
   /*
     - Use registerFactory for the cubit:
@@ -20,5 +23,8 @@ void setUpServiceLocator() {
   */
   getIt.registerFactory<SignInCubit>(
     () => SignInCubit(getIt<SignInRepoImplement>()),
+  );
+  getIt.registerFactory<SignUpCubit>(
+    () => SignUpCubit(getIt<SignUpRepoImplement>()),
   );
 }

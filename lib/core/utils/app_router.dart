@@ -1,9 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:starter_template/core/utils/service_locator.dart';
+import 'package:starter_template/features/Auth/SignIn/data/repos/Sign_Up_Repos/sign_up_repo_implement.dart';
 import 'package:starter_template/features/Auth/SignIn/data/repos/sign_in_repo_implement.dart';
 import 'package:starter_template/features/Auth/SignIn/presentation/manager/Sign_In_cubit/sign_in_cubit.dart';
 import 'package:starter_template/features/Auth/SignIn/presentation/views/sign_in_view.dart';
+import 'package:starter_template/features/Auth/SignUp/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:starter_template/features/Auth/SignUp/presentation/views/sign_up_view.dart';
 import 'package:starter_template/features/OnBoarding/presentation/views/on_boarding_view.dart';
 import 'package:starter_template/features/Home/presentation/views/home_view.dart';
@@ -38,7 +40,9 @@ abstract class AppRouter {
       GoRoute(
         path: '/signUpView',
         builder: (context, state) {
-          return const SignUpView();
+          return BlocProvider(
+              create: (context) => SignUpCubit(getIt<SignUpRepoImplement>()),
+              child: const SignUpView());
         },
       ),
       GoRoute(
