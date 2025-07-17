@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class Failures {
   final String errorMessage;
@@ -59,4 +60,25 @@ class ServerFailure
       return ServerFailure('An error occurred');
     }
   }
+
+   factory ServerFailure.fromAuth(FirebaseAuthException error) {
+    switch (error.code) {
+      case 'invalid-email':
+        return ServerFailure('The email address is not valid.');
+      case 'user-disabled':
+        return ServerFailure('This user has been disabled.');
+      case 'user-not-found':
+        return ServerFailure('No user found with this email.');
+      case 'wrong-password':
+        return ServerFailure('Incorrect password.');
+      case 'email-already-in-use':
+        return ServerFailure('The email is already in use.');
+      case 'weak-password':
+        return ServerFailure('The password is too weak.');
+      case 'operation-not-allowed':
+        return ServerFailure('This operation is not allowed.');
+      default:
+        return ServerFailure(error.message ?? 'Authentication error occurred.');
+    }
+}
 }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:starter_template/core/functions/show_snack_bar.dart';
 
 abstract class AuthServices {
-  static Future<UserCredential?> loginUser(
+  static Future<UserCredential?> signIn(
       {required BuildContext context,
       required String? email,
       required String? password}) async {

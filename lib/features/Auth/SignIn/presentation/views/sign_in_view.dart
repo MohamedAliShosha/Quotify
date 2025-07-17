@@ -96,7 +96,7 @@ class _SignInViewState extends State<SignInView> {
                             true; // Shows a loading indicator while processing the login request.
                         setState(() {});
                         try {
-                          await AuthServices.loginUser(
+                          await AuthServices.signIn(
                               context: context,
                               email: email,
                               password: password);
