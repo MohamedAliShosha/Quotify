@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/core/widgets/custom_button.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({
@@ -44,20 +41,11 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
         // const SizedBox(height: 40),
-        Padding(
-          padding: const EdgeInsets.only(top: 100, right: 50, left: 50),
-          child: CustomButton(
-            buttonTitle: 'Explore Quotes!',
-            onTap: () {
-              GoRouter.of(context).push(AppRouter.kQuotesView);
-            },
-          ),
+        const Padding(
+          padding: EdgeInsets.only(top: 200, right: 50, left: 50),
         ),
         // const SizedBox(height: 20),
-        Expanded(
-          flex: 1,
-          child: Container(),
-        ),
+        //
       ],
     );
   }

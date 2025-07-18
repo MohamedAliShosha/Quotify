@@ -7,6 +7,7 @@ void showSnackBar(BuildContext context, {required String message}) {
         backgroundColor: ColorsManager.kPrimaryColor,
         content: Center(
           child: Text(
+            textAlign: TextAlign.center,
             message,
             style: const TextStyle(
               color: ColorsManager.kBlackColor,
