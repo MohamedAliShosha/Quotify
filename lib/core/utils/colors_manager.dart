@@ -5,4 +5,5 @@ abstract class ColorsManager {
   static const kBlackColor = Colors.black;
   static const kWhiteColor = Colors.white;
   static const kGreyColor = Colors.grey;
+  static const kQuoteItemColor = Color(0xffFFD6AF);
 }

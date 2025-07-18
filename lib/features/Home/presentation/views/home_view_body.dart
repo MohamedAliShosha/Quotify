@@ -44,7 +44,7 @@ class HomeViewBody extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: ColorsManager.kGreyColor,
+              color: ColorsManager.kQuoteItemColor,
             ),
           ),
         ),
