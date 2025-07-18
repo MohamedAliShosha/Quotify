@@ -9,6 +9,7 @@ import 'package:starter_template/features/Auth/SignUp/presentation/manager/sign_
 import 'package:starter_template/features/Auth/SignUp/presentation/views/sign_up_view.dart';
 import 'package:starter_template/features/OnBoarding/presentation/views/on_boarding_view.dart';
 import 'package:starter_template/features/Home/presentation/views/home_view.dart';
+import 'package:starter_template/features/Quotes/presentation/views/quotes_view.dart';
 
 abstract class AppRouter {
   // The first thing when creating routers is declaring routes variables
@@ -50,7 +51,13 @@ abstract class AppRouter {
         builder: (context, state) {
           return const HomeView();
         },
-      )
+      ),
+      GoRoute(
+        path: '/quotesView',
+        builder: (context, state) {
+          return const QuotesView();
+        },
+      ),
     ],
   );
 }
