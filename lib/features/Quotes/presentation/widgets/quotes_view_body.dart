@@ -9,7 +9,10 @@ class QuotesViewBody extends StatelessWidget {
     return ListView.builder(
       itemCount: 10,
       itemBuilder: (context, index) {
-        return const CustomQuoteItem();
+        return const Padding(
+          padding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+          child: CustomQuoteItem(),
+        );
       },
     );
   }

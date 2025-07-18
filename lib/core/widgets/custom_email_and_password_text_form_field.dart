@@ -41,8 +41,8 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
         decoration: InputDecoration(
           suffixIcon: suffixIcon,
           labelText: labelText,
-          labelStyle: const TextStyle(
-              fontSize: 16, color: ColorsManager.kQuoteItemColor),
+          labelStyle:
+              const TextStyle(fontSize: 16, color: ColorsManager.kGreyColor),
           hintText: hintText,
           hintStyle: const TextStyle(
             color: ColorsManager.kBlackColor,

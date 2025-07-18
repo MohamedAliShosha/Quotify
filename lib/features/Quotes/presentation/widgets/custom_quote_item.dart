@@ -9,45 +9,45 @@ class CustomQuoteItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
+      padding: const EdgeInsets.only(top: 24, bottom: 24, left: 8),
       decoration: BoxDecoration(
-        color: ColorsManager.kQuoteItemColor,
-        borderRadius: BorderRadius.circular(16),
+        color: ColorsManager.kPrimaryColor,
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset(
-                'assets/quote.png',
+                'assets/images/quote.png',
                 height: 24,
                 width: 24,
               ),
             ],
           ),
-          const Padding(
-            padding: EdgeInsets.only(left: 18),
-            child: Column(
-              children: [
-                Text(
-                  'This is a test quote',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'This is a test quote',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
-                SizedBox(
-                  height: 16,
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              Text(
+                'This is the author of the quote',
+                style: TextStyle(
+                  color: ColorsManager.kGreyColor,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
-                  'This is the author of the quote',
-                  style: TextStyle(
-                    color: ColorsManager.kGreyColor,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           )
         ],
       ),
