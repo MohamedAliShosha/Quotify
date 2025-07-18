@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starter_template/core/functions/build_bottom_nav_bar_item.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/features/Home/presentation/widgets/home_view_body.dart';
 import 'package:starter_template/features/Quotes/presentation/widgets/quotes_view_body.dart';
@@ -48,21 +49,21 @@ class _HomeViewState extends State<HomeView> {
         onTap: onTap,
         selectedItemColor: ColorsManager.kPrimaryColor,
         unselectedItemColor: ColorsManager.kGreyColor,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+        items: [
+          buildBottomNavBarItem(
+            icon: const Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.format_quote),
+          buildBottomNavBarItem(
+            icon: const Icon(Icons.format_quote),
             label: 'Quotes',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark),
+          buildBottomNavBarItem(
+            icon: const Icon(Icons.bookmark),
             label: 'Saved',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+          buildBottomNavBarItem(
+            icon: const Icon(Icons.person),
             label: 'Profile',
           ),
         ],
