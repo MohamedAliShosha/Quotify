@@ -37,8 +37,10 @@ class CustomQuoteItem extends StatelessWidget {
               SizedBox(
                 height: 4,
               ),
-              Text('This is the author of the quote',
-                  style: AppStyles.styleBoldPrimary24),
+              const Text(
+                'This is the author of the quote',
+                style: AppStyles.styleBoldGrey18,
+              ),
             ],
           )
         ],
