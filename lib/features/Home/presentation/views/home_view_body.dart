@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:starter_template/core/utils/app_router.dart';
+import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 
@@ -31,11 +32,7 @@ class HomeViewBody extends StatelessWidget {
         const Text(
           'Discover Your Favorite Quotes!',
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-            color: ColorsManager.kPrimaryColor,
-          ),
+          style: AppStyles.styleBoldPrimary24,
         ),
         const SizedBox(height: 20),
         const Padding(
@@ -43,11 +40,7 @@ class HomeViewBody extends StatelessWidget {
           child: Text(
             'Browse through inspiring quotes or add your own to share with others!',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: ColorsManager.kGreyColor,
-            ),
+            style: AppStyles.styleBoldGrey16,
           ),
         ),
         // const SizedBox(height: 40),

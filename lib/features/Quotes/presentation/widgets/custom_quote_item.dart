@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 
 class CustomQuoteItem extends StatelessWidget {
@@ -31,22 +32,13 @@ class CustomQuoteItem extends StatelessWidget {
             children: [
               Text(
                 'This is a test quote',
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: AppStyles.styleBoldBlack18,
               ),
               SizedBox(
                 height: 4,
               ),
-              Text(
-                'This is the author of the quote',
-                style: TextStyle(
-                  color: ColorsManager.kGreyColor,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
+              Text('This is the author of the quote',
+                  style: AppStyles.styleBoldPrimary24),
             ],
           )
         ],

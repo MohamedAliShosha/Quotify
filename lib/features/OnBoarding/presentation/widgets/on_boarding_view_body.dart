@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:starter_template/core/utils/app_router.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
+import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/features/OnBoarding/presentation/widgets/custom_animated_opacity.dart';
 
@@ -36,26 +36,21 @@ class OnboardingViewBody extends StatelessWidget {
           CustomAnimatedOpacity(
             isVisible: _isVisible,
             durationInSeconds: 2,
-            child:  const Text(
+            child: Text(
               'Get',
-              style: TextStyle(
-                height: .5,
+              style: AppStyles.styleBoldPrimary24.copyWith(
                 fontSize: 50,
-                color: ColorsManager.kPrimaryColor,
-                fontWeight: FontWeight.bold,
-                
+                height: .5,
               ),
             ),
           ),
           CustomAnimatedOpacity(
             isVisible: _isVisible,
             durationInSeconds: 3,
-            child:  const Text(
+            child: Text(
               'Inspired',
-              style: TextStyle(
-                color: ColorsManager.kPrimaryColor,
-                fontSize: 50, // responsive font size
-                fontWeight: FontWeight.bold,
+              style: AppStyles.styleBoldPrimary24.copyWith(
+                fontSize: 50,
               ),
             ),
           ),
@@ -66,7 +61,7 @@ class OnboardingViewBody extends StatelessWidget {
           CustomAnimatedOpacity(
             isVisible: _isVisible,
             durationInSeconds: 3,
-            child:  CustomButton(
+            child: CustomButton(
               buttonTitle: 'Get Started',
               onTap: () => GoRouter.of(context).push(AppRouter.kSignInView),
             ),

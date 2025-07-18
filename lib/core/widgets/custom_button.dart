@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 
 class CustomButton extends StatelessWidget {
@@ -26,10 +27,9 @@ class CustomButton extends StatelessWidget {
             onTap: onTap,
             child: Text(
               buttonTitle,
-              style: const TextStyle(
-                  color: ColorsManager.kBlackColor,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold),
+              style: AppStyles.styleBoldPrimary24.copyWith(
+                color: ColorsManager.kBlackColor,
+              ),
             ),
           ),
         ),
