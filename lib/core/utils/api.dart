@@ -1,14 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:starter_template/core/utils/constants.dart';
 
 class ApiServices {
   final Dio _dio;
-
+  final _baseUrl = Constants.baseUrl;
   ApiServices(this._dio);
 
-  Future<Map<String, String>> get({required String url, String? token}) async {
+  Future<dynamic> get({required String endPoint, String? token}) async {
     try {
       final response = await _dio.get(
-        url,
+        '$_baseUrl$endPoint',
         options: Options(
           headers: token != null ? {'Authorization': 'Bearer $token'} : null,
         ),
@@ -20,13 +21,13 @@ class ApiServices {
   }
 
   Future<dynamic> post({
-    required String url,
+    required String endPoint,
     required dynamic body,
     required String? token,
   }) async {
     try {
       final response = await _dio.post(
-        url,
+        '$_baseUrl$endPoint',
         data: body,
         options: Options(
           headers: token != null ? {'Authorization': 'Bearer $token'} : null,
@@ -39,13 +40,13 @@ class ApiServices {
   }
 
   Future<dynamic> put({
-    required String url,
+    required String endPoint,
     required dynamic body,
     required String? token,
   }) async {
     try {
       final response = await _dio.put(
-        url,
+        '$_baseUrl$endPoint',
         data: body,
         options: Options(
           headers: {
@@ -61,12 +62,12 @@ class ApiServices {
   }
 
   Future<dynamic> delete({
-    required String url,
+    required String endPoint,
     required String? token,
   }) async {
     try {
       final response = await _dio.delete(
-        url,
+        '$_baseUrl$endPoint',
         options: Options(
           headers: token != null ? {'Authorization': 'Bearer $token'} : null,
         ),
