@@ -61,7 +61,7 @@ class ServerFailure
     }
   }
 
-   factory ServerFailure.fromAuth(FirebaseAuthException error) {
+  factory ServerFailure.fromAuth(FirebaseAuthException error) {
     switch (error.code) {
       case 'invalid-email':
         return ServerFailure('The email address is not valid.');
@@ -80,5 +80,5 @@ class ServerFailure
       default:
         return ServerFailure(error.message ?? 'Authentication error occurred.');
     }
-}
+  }
 }

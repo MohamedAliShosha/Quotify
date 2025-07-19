@@ -4,7 +4,8 @@ import 'package:starter_template/core/utils/colors_manager.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({
-    super.key, this.onPressed,
+    super.key,
+    this.onPressed,
   });
 
   final void Function()? onPressed;
@@ -12,18 +13,15 @@ class CustomElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed, 
+      onPressed: onPressed,
       // () {
       //   // Log event when button is pressed
       //   // Navigator.pushNamed(context, QuotesView.id);
       // },
       style: ElevatedButton.styleFrom(
         backgroundColor: ColorsManager.kPrimaryColor,
-        shape: buildCircularRoundedRectangleBorder(
-          raduis: 30
-        ),
-        padding:
-            const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+        shape: buildCircularRoundedRectangleBorder(radius: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
       ),
       child: const Text(
         'Explore Quotes',
@@ -35,6 +33,4 @@ class CustomElevatedButton extends StatelessWidget {
       ),
     );
   }
-
-  
 }

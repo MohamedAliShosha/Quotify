@@ -3,15 +3,15 @@ import 'package:starter_template/core/utils/colors_manager.dart';
 
 class CustomRedirectText extends StatelessWidget {
   const CustomRedirectText({
-    super.key, required this.redirectText,
+    super.key,
+    required this.redirectText,
   });
 
   final String redirectText;
 
-
   @override
   Widget build(BuildContext context) {
-    return  Text(
+    return Text(
       redirectText,
       style: const TextStyle(
         color: ColorsManager.kPrimaryColor,
@@ -19,4 +19,3 @@ class CustomRedirectText extends StatelessWidget {
     );
   }
 }
-

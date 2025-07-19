@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-RoundedRectangleBorder buildCircularRoundedRectangleBorder({required double raduis}) {
-    return RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(raduis),
-      );
-  }
+RoundedRectangleBorder buildCircularRoundedRectangleBorder(
+    {required double radius}) {
+  return RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(radius),
+  );
+}

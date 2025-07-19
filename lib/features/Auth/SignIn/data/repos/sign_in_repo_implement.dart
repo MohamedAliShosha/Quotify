@@ -8,7 +8,7 @@ class SignInRepoImplement implements SignInRepo {
       FirebaseAuth.instance; // Create an instance of firebaseAuth
 
   @override
- // This method returns either a left side which is "Failure" or right side which is "user object"
+  // This method returns either a left side which is "Failure" or right side which is "user object"
   Future<Either<Failures, User>> signIn(
       {required String email, required String password}) async {
     if (email.isEmpty) {
