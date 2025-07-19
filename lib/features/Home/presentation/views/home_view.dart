@@ -41,33 +41,43 @@ class _HomeViewState extends State<HomeView> {
         index: currentIndex,
         children: views,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType
-            .fixed, // resolved the issue of changing the bottomNavBarColor
-        backgroundColor: ColorsManager.kBlackColor,
-        currentIndex: currentIndex,
-        onTap: onTap,
-        selectedItemColor: ColorsManager.kPrimaryColor,
-        unselectedItemColor: ColorsManager.kGreyColor,
-        items: [
-          buildBottomNavBarItem(
-            icon: const Icon(Icons.home),
-            label: 'Home',
-          ),
-          buildBottomNavBarItem(
-            icon: const Icon(Icons.format_quote),
-            label: 'Quotes',
-          ),
-          buildBottomNavBarItem(
-            icon: const Icon(Icons.bookmark),
-            label: 'Saved',
-          ),
-          buildBottomNavBarItem(
-            icon: const Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-      ),
+      bottomNavigationBar: buildBottomNavBar(
+          backgroundColor: ColorsManager.kBlackColor,
+          selectedItemColor: ColorsManager.kPrimaryColor,
+          unSelectedItemColor: ColorsManager.kGreyColor),
+    );
+  }
+
+  BottomNavigationBar buildBottomNavBar(
+      {required Color backgroundColor,
+      required Color selectedItemColor,
+      required Color unSelectedItemColor}) {
+    return BottomNavigationBar(
+      type: BottomNavigationBarType
+          .fixed, // resolved the issue of changing the bottomNavBarColor
+      backgroundColor: backgroundColor,
+      currentIndex: currentIndex,
+      onTap: onTap,
+      selectedItemColor: selectedItemColor,
+      unselectedItemColor: unSelectedItemColor,
+      items: [
+        buildBottomNavBarItem(
+          icon: const Icon(Icons.home),
+          label: 'Home',
+        ),
+        buildBottomNavBarItem(
+          icon: const Icon(Icons.format_quote),
+          label: 'Quotes',
+        ),
+        buildBottomNavBarItem(
+          icon: const Icon(Icons.bookmark),
+          label: 'Saved',
+        ),
+        buildBottomNavBarItem(
+          icon: const Icon(Icons.person),
+          label: 'Profile',
+        ),
+      ],
     );
   }
 }
