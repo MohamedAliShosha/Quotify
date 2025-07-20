@@ -18,7 +18,7 @@ final class QuotesSuccess extends QuotesState {
 }
 
 final class QuotesFailure extends QuotesState {
-  final String message;
+  final String errorMessage;
 
-  const QuotesFailure({required this.message});
+  const QuotesFailure({required this.errorMessage});
 }

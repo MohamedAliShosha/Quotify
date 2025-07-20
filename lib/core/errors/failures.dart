@@ -10,7 +10,7 @@ abstract class Failures {
 class ServerFailure
     extends Failures // ServerFailure extends Failure to handle server-related failures
 {
-  ServerFailure(super.erroeMessage);
+  ServerFailure(super.errorMessage);
   /*
     🔹 How It Works:
    1- The factory constructor fromDioError takes a DioException as input.

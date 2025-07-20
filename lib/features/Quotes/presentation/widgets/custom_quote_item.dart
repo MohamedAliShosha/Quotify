@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
+import 'package:starter_template/features/Quotes/data/models/quote_model.dart';
 
 class CustomQuoteItem extends StatelessWidget {
   const CustomQuoteItem({
     super.key,
+    required this.quoteModel,
   });
+
+  final QuoteModel quoteModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,29 +21,46 @@ class CustomQuoteItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Image.asset(
-                'assets/images/quote.png',
-                height: 24,
-                width: 24,
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 4),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Image.asset(
+                  'assets/images/quote.png',
+                  height: 24,
+                  width: 24,
+                ),
+              ],
+            ),
           ),
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'This is a test quote',
+                quoteModel.quote ?? 'There is No Quote Available Now',
                 style: AppStyles.styleBoldBlack18,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 4,
               ),
-              const Text(
-                'This is the author of the quote',
-                style: AppStyles.styleBoldGrey18,
+              Row(
+                children: [
+                  Text(
+                    quoteModel.author ?? 'There is No Author Available',
+                    style: AppStyles.styleBoldGrey18,
+                  ),
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      right: 12,
+                    ),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: const Icon(Icons.bookmark_border),
+                    ),
+                  )
+                ],
               ),
             ],
           )
