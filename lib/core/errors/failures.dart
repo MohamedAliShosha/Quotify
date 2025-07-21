@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:hive/hive.dart';
 
 abstract class Failures {
   final String errorMessage;
@@ -80,5 +81,35 @@ class ServerFailure
       default:
         return ServerFailure(error.message ?? 'Authentication error occurred.');
     }
+  }
+  factory ServerFailure.fromHiveError(HiveError error) {
+    switch (error.message) {
+      case 'Box not found':
+        return ServerFailure('Box not found');
+      case 'Invalid box name':
+        return ServerFailure('Invalid box name');
+      case 'Invalid key':
+        return ServerFailure('Invalid key');
+      case 'Invalid value':
+        return ServerFailure('Invalid value');
+      case 'Database is closed':
+        return ServerFailure('Database is closed');
+      case 'Database is not open':
+        return ServerFailure('Database is not open');
+      case 'Database is already open':
+        return ServerFailure('Database is already open');
+      case 'Database is not closed':
+        return ServerFailure('Database is not closed');
+      case 'Database is not initialized':
+        return ServerFailure('Database is not initialized');
+      case 'Database is already initialized':
+        return ServerFailure('Database is already initialized');
+      case 'Database is not ready':
+        return ServerFailure('Database is not ready');
+      case 'Database is already ready':
+        return ServerFailure('Database is already ready');
+      default:
+    }
+    return ServerFailure(error.message);
   }
 }
