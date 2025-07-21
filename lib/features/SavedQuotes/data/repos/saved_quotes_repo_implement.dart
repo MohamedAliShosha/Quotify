@@ -20,7 +20,8 @@ class SavedQuotesRepoImplement implements SavedQuotesRepo {
         return Left(ServerFailure('Unknown error: ${e.toString()}'));
       }
     }
-    return const Right(null);
+    return const Right(
+        null); // Return null if the operation is successful and the quote is saved
   }
 
   @override
@@ -29,7 +30,8 @@ class SavedQuotesRepoImplement implements SavedQuotesRepo {
       final box = await Hive.openBox<SavedQuotesModel>(
           Constants.kSavedQuotesBox); // This line is used to open the box
       final quotes = box.values.toList();
-      return Right(quotes);
+      return Right(
+          quotes); // Return the list of saved quotes if the operation is successful
     } catch (e) {
       if (e is HiveError) {
         return Left(ServerFailure.fromHiveError(e));
