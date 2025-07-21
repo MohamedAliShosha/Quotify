@@ -40,8 +40,9 @@ dependencies:
   flutter_bloc: ^9.1.1
   get_it: ^8.0.3
   go_router: null
+  hive: ^2.2.3
   modal_progress_hud_nsn: null
-  skeletonizer:
+  skeletonizer: null
 
 dev_dependencies:
   flutter_lints: ^4.0.0
