@@ -8,3 +8,15 @@ sealed class SavedQuotesState extends Equatable {
 }
 
 final class SavedQuotesInitial extends SavedQuotesState {}
+
+final class SavedQuotesLoading extends SavedQuotesState {}
+
+final class SavedQuotesSuccess extends SavedQuotesState {
+  final List<SavedQuotesModel> quotes;
+  const SavedQuotesSuccess({required this.quotes});
+}
+
+final class SavedQuotesFailure extends SavedQuotesState {
+  final String errorMessage;
+  const SavedQuotesFailure({required this.errorMessage});
+}
