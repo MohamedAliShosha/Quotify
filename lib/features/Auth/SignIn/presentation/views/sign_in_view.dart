@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/features/Auth/SignIn/presentation/widgets/sign_in_view_body.dart';
+import 'package:starter_template/features/auth/SignIn/presentation/widgets/sign_in_view_body.dart';
 
 class SignInView extends StatelessWidget {
   const SignInView({super.key});

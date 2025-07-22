@@ -9,7 +9,7 @@ class CustomQuoteItem extends StatelessWidget {
     required this.quoteModel,
   });
 
-  final QuoteModel quoteModel;
+  final QuotesModel quoteModel;
 
   @override
   Widget build(BuildContext context) {

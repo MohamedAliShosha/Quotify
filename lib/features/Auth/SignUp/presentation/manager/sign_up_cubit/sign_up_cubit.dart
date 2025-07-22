@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_template/features/Auth/SignUp/data/repos/sign_up_repo.dart';
+import 'package:starter_template/features/auth/SignUp/data/repos/sign_up_repo.dart';
 
 part 'sign_up_state.dart';
 

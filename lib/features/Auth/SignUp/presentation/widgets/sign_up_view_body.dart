@@ -7,10 +7,10 @@ import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/core/widgets/custom_email_and_password_text_form_field.dart';
-import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custom_header_text.dart';
-import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custom_redirect_button.dart';
-import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custom_redirect_text.dart';
-import 'package:starter_template/features/Auth/SignUp/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
+import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_header_text.dart';
+import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_redirect_button.dart';
+import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_redirect_text.dart';
+import 'package:starter_template/features/auth/SignUp/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 
 // ignore: must_be_immutable
 class SignUpViewBody extends StatefulWidget {

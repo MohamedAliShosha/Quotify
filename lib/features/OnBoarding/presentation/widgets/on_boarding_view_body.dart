@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
-import 'package:starter_template/features/OnBoarding/presentation/widgets/custom_animated_opacity.dart';
+import 'package:starter_template/features/onboarding/presentation/widgets/custom_animated_opacity.dart';
 
 class OnboardingViewBody extends StatelessWidget {
   const OnboardingViewBody({

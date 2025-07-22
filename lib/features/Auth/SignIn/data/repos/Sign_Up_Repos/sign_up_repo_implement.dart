@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:starter_template/core/errors/failures.dart';
-import 'package:starter_template/features/Auth/SignUp/data/repos/sign_up_repo.dart';
+import 'package:starter_template/features/auth/SignUp/data/repos/sign_up_repo.dart';
 
 class SignUpRepoImplement implements SignUpRepo {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;

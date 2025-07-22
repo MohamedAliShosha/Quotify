@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:starter_template/features/OnBoarding/presentation/widgets/on_boarding_view_body.dart';
+import 'package:starter_template/features/onboarding/presentation/widgets/on_boarding_view_body.dart';
 
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});

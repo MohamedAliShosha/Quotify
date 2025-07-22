@@ -7,10 +7,10 @@ import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/core/widgets/custom_email_and_password_text_form_field.dart';
-import 'package:starter_template/features/Auth/SignIn/presentation/manager/Sign_In_cubit/sign_in_cubit.dart';
-import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custom_header_text.dart';
-import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custom_redirect_button.dart';
-import 'package:starter_template/features/Auth/SignIn/presentation/widgets/custom_redirect_text.dart';
+import 'package:starter_template/features/auth/SignIn/presentation/manager/Sign_In_cubit/sign_in_cubit.dart';
+import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_header_text.dart';
+import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_redirect_button.dart';
+import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_redirect_text.dart';
 
 class SignInViewBody extends StatefulWidget {
   const SignInViewBody({super.key});
