@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/features/quotes/data/models/quote_model.dart';
+import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/quotes/presentation/widgets/custom_quote_item.dart';
 
 class QuotesListView extends StatelessWidget {
@@ -20,8 +20,8 @@ class QuotesListView extends StatelessWidget {
         final quote = quotes[index];
 
         return CustomQuoteItem(
-            quoteModel: quote ??
-                const QuotesModel(quote: 'Loading', author: 'Loading'));
+            quoteModel:
+                quote ?? QuotesModel(quote: 'Loading', author: 'Loading'));
       },
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/features/Quotes/data/models/quote_model.dart';
+import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 
 class CustomQuoteItem extends StatelessWidget {
   const CustomQuoteItem({

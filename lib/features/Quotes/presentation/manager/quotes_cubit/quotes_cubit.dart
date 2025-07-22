@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_template/features/quotes/data/models/quote_model.dart';
+import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/quotes/data/repos/quotes_repo.dart';
 
 part 'quotes_state.dart';

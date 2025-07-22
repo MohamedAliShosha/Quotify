@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:starter_template/core/errors/failures.dart';
 import 'package:starter_template/core/utils/api_service.dart';
-import 'package:starter_template/features/quotes/data/models/quote_model.dart';
+import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/quotes/data/repos/quotes_repo.dart';
 
 class QuotesRepoImplement implements QuotesRepo {
