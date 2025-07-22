@@ -12,7 +12,7 @@ final class QuotesInitial extends QuotesState {}
 final class QuotesLoading extends QuotesState {}
 
 final class QuotesSuccess extends QuotesState {
-  final List<QuoteModel> quotes;
+  final List<QuotesModel> quotes;
 
   const QuotesSuccess({required this.quotes});
 }

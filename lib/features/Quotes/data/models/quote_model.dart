@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-class QuoteModel extends Equatable {
+class QuotesModel extends Equatable {
   final String? quote;
   final String? author;
 
-  const QuoteModel({this.quote, this.author});
+  const QuotesModel({this.quote, this.author});
 
-  factory QuoteModel.fromJson(Map<String, dynamic> json) => QuoteModel(
+  factory QuotesModel.fromJson(Map<String, dynamic> json) => QuotesModel(
         quote: json['q'] as String?,
         author: json['a'] as String?,
       );

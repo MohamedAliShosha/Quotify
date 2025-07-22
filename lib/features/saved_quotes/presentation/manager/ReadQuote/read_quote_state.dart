@@ -11,10 +11,6 @@ final class ReadQuoteInitial extends ReadQuoteState {}
 
 final class ReadQuoteLoading extends ReadQuoteState {}
 
-final class ReadQuoteSuccess extends ReadQuoteState {
-  final List<SaveQuoteModel> quotes;
-
-  const ReadQuoteSuccess({required this.quotes});
-}
+final class ReadQuoteSuccess extends ReadQuoteState {}
 
 final class ReadQuoteFailure extends ReadQuoteState {}

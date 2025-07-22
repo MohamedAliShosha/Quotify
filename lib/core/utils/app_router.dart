@@ -9,8 +9,8 @@ import 'package:starter_template/features/Auth/SignUp/presentation/manager/sign_
 import 'package:starter_template/features/Auth/SignUp/presentation/views/sign_up_view.dart';
 import 'package:starter_template/features/OnBoarding/presentation/views/on_boarding_view.dart';
 import 'package:starter_template/features/Home/presentation/views/home_view.dart';
-import 'package:starter_template/features/Quotes/presentation/views/quotes_view.dart';
-import 'package:starter_template/features/SavedQuotes/presentation/views/save_quotes_view.dart';
+import 'package:starter_template/features/quotes/presentation/views/quotes_view.dart';
+import 'package:starter_template/features/saved_quotes/presentation/views/save_quotes_view.dart';
 
 abstract class AppRouter {
   // The first thing when creating routers is declaring routes variables

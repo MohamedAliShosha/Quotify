@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/features/Quotes/data/models/quote_model.dart';
-import 'package:starter_template/features/Quotes/presentation/widgets/custom_quote_item.dart';
+import 'package:starter_template/features/quotes/data/models/quote_model.dart';
+import 'package:starter_template/features/quotes/presentation/widgets/custom_quote_item.dart';
 
 class QuotesListView extends StatelessWidget {
   const QuotesListView({
@@ -8,7 +8,7 @@ class QuotesListView extends StatelessWidget {
     required this.quotes,
   });
 
-  final List<QuoteModel?> quotes;
+  final List<QuotesModel?> quotes;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class QuotesListView extends StatelessWidget {
 
         return CustomQuoteItem(
           quoteModel: quote ??
-              const QuoteModel(
+              const QuotesModel(
                 quote: 'Loading...',
                 author: 'Loading...',
               ),

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:starter_template/core/errors/failures.dart';
-import 'package:starter_template/features/Quotes/data/models/quote_model.dart';
+import 'package:starter_template/features/quotes/data/models/quote_model.dart';
 
 abstract class QuotesRepo {
-  Future<Either<Failures, List<QuoteModel>>> fetchQuotes();
+  Future<Either<Failures, List<QuotesModel>>> fetchQuotes();
 }

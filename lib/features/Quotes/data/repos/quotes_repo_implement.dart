@@ -2,19 +2,20 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:starter_template/core/errors/failures.dart';
 import 'package:starter_template/core/utils/api_service.dart';
-import 'package:starter_template/features/Quotes/data/models/quote_model.dart';
-import 'package:starter_template/features/Quotes/data/repos/quotes_repo.dart';
+import 'package:starter_template/features/quotes/data/models/quote_model.dart';
+import 'package:starter_template/features/quotes/data/repos/quotes_repo.dart';
 
 class QuotesRepoImplement implements QuotesRepo {
   final ApiServices apiServices;
 
   QuotesRepoImplement(this.apiServices);
   @override
-  Future<Either<Failures, List<QuoteModel>>> fetchQuotes() async {
+  Future<Either<Failures, List<QuotesModel>>> fetchQuotes() async {
     try {
       // I used a quotes variable directly not using final data = await apiServices.get(endPoint: 'quotes') then assigning the data to a new variable called quotes because the response has only quotes not other items
       final data = await apiServices.get(endPoint: 'quotes');
-      final quotesList = data.map((item) => QuoteModel.fromJson(item)).toList();
+      final quotesList =
+          data.map((item) => QuotesModel.fromJson(item)).toList();
 
       return Right(quotesList);
     } catch (error) {

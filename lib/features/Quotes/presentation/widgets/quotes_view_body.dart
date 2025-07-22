@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/features/Quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
-import 'package:starter_template/features/Quotes/presentation/widgets/quotes_list_view.dart';
+import 'package:starter_template/features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
+import 'package:starter_template/features/quotes/presentation/widgets/quotes_list_view.dart';
 
 class QuotesViewBody extends StatefulWidget {
   const QuotesViewBody({super.key});
@@ -42,7 +42,9 @@ class _QuotesViewBodyState extends State<QuotesViewBody> {
               color: ColorsManager.kPrimaryColor,
               backgroundColor: ColorsManager.kBlackColor,
               onRefresh: () => context.read<QuotesCubit>().refreshQuotes(),
-              child: QuotesListView(quotes: quotes),
+              child: QuotesListView(
+                quotes: quotes,
+              ),
             ),
           );
         },

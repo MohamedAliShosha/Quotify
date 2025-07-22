@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:starter_template/core/functions/build_bottom_nav_bar_item.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/features/Quotes/presentation/views/quotes_view.dart';
-import 'package:starter_template/features/SavedQuotes/presentation/views/save_quotes_view.dart';
+import 'package:starter_template/features/quotes/presentation/views/quotes_view.dart';
+import 'package:starter_template/features/saved_quotes/presentation/views/save_quotes_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
