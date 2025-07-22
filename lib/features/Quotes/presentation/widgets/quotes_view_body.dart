@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
-
-import 'package:starter_template/features/Quotes/data/models/quote_model.dart';
 import 'package:starter_template/features/Quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
-import 'package:starter_template/features/Quotes/presentation/widgets/custom_quote_item.dart';
+import 'package:starter_template/features/Quotes/presentation/widgets/quotes_list_view.dart';
 
 class QuotesViewBody extends StatefulWidget {
   const QuotesViewBody({super.key});
@@ -44,23 +42,7 @@ class _QuotesViewBodyState extends State<QuotesViewBody> {
               color: ColorsManager.kPrimaryColor,
               backgroundColor: ColorsManager.kBlackColor,
               onRefresh: () => context.read<QuotesCubit>().refreshQuotes(),
-              child: ListView.separated(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                itemCount: quotes.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 8),
-                itemBuilder: (context, index) {
-                  final quote = quotes[index];
-
-                  return CustomQuoteItem(
-                    quoteModel: quote ??
-                        const QuoteModel(
-                          quote: 'Loading...',
-                          author: 'Loading...',
-                        ),
-                  );
-                },
-              ),
+              child: QuotesListView(quotes: quotes),
             ),
           );
         },

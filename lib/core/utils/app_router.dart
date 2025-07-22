@@ -10,6 +10,7 @@ import 'package:starter_template/features/Auth/SignUp/presentation/views/sign_up
 import 'package:starter_template/features/OnBoarding/presentation/views/on_boarding_view.dart';
 import 'package:starter_template/features/Home/presentation/views/home_view.dart';
 import 'package:starter_template/features/Quotes/presentation/views/quotes_view.dart';
+import 'package:starter_template/features/SavedQuotes/presentation/views/save_quotes_view.dart';
 
 abstract class AppRouter {
   // The first thing when creating routers is declaring routes variables
@@ -19,6 +20,7 @@ abstract class AppRouter {
   static const kQuotesView = '/quotesView';
   static const kHomeView = '/homeView';
   static const kProfileView = '/profileView';
+  static const kSaveQuotesView = '/saveQuotesView';
 
   // Then creating the router variable that = GoRouter"Contains a list of routes"
   static final router = GoRouter(
@@ -56,6 +58,12 @@ abstract class AppRouter {
         path: '/quotesView',
         builder: (context, state) {
           return const QuotesView();
+        },
+      ),
+      GoRoute(
+        path: '/saveQuotesView',
+        builder: (context, state) {
+          return const SaveQuotesView();
         },
       ),
     ],
