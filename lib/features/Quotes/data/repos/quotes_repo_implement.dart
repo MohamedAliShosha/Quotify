@@ -10,7 +10,7 @@ class QuotesRepoImplement implements QuotesRepo {
 
   QuotesRepoImplement(this.apiServices);
   @override
-  Future<Either<Failures, List<QuoteModel>>> getQuotes() async {
+  Future<Either<Failures, List<QuoteModel>>> fetchQuotes() async {
     try {
       // I used a quotes variable directly not using final data = await apiServices.get(endPoint: 'quotes') then assigning the data to a new variable called quotes because the response has only quotes not other items
       final data = await apiServices.get(endPoint: 'quotes');

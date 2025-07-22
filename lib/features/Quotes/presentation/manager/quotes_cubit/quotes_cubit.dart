@@ -17,7 +17,7 @@ class QuotesCubit extends Cubit<QuotesState> {
       return;
     }
     emit(QuotesLoading());
-    final result = await quotesRepo.getQuotes();
+    final result = await quotesRepo.fetchQuotes();
     result.fold(
       (failure) => emit(QuotesFailure(errorMessage: failure.errorMessage)),
       (quotes) {
@@ -31,7 +31,7 @@ class QuotesCubit extends Cubit<QuotesState> {
   Future<void> refreshQuotes() async {
     // This method is used when user pulls to refresh
     emit(QuotesLoading());
-    final result = await quotesRepo.getQuotes();
+    final result = await quotesRepo.fetchQuotes();
     result.fold(
         (failure) => emit(QuotesFailure(errorMessage: failure.errorMessage)),
         (quotes) {
