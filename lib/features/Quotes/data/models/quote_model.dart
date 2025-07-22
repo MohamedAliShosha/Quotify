@@ -1,10 +1,13 @@
-import 'package:equatable/equatable.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class QuotesModel extends Equatable {
+@HiveType(typeId: 0)
+class QuotesModel extends HiveObject {
+  @HiveField(0)
   final String? quote;
+  @HiveField(1)
   final String? author;
 
-  const QuotesModel({this.quote, this.author});
+  QuotesModel({required this.quote, required this.author});
 
   factory QuotesModel.fromJson(Map<String, dynamic> json) => QuotesModel(
         quote: json['q'] as String?,
@@ -15,7 +18,4 @@ class QuotesModel extends Equatable {
         'q': quote,
         'a': author,
       };
-
-  @override
-  List<Object?> get props => [quote, author];
 }

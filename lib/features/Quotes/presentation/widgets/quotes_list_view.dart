@@ -20,12 +20,8 @@ class QuotesListView extends StatelessWidget {
         final quote = quotes[index];
 
         return CustomQuoteItem(
-          quoteModel: quote ??
-              const QuotesModel(
-                quote: 'Loading...',
-                author: 'Loading...',
-              ),
-        );
+            quoteModel: quote ??
+                const QuotesModel(quote: 'Loading', author: 'Loading'));
       },
     );
   }
