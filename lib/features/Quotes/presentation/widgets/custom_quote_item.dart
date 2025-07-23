@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:starter_template/core/functions/show_snack_bar.dart';
 import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/saved_quotes/presentation/manager/save_quote/save_quote_cubit.dart';
+import 'package:starter_template/features/saved_quotes/presentation/manager/save_quote/save_quote_state.dart';
 
 class CustomQuoteItem extends StatefulWidget {
   const CustomQuoteItem({
@@ -64,16 +66,29 @@ class _CustomQuoteItemState extends State<CustomQuoteItem> {
                     padding: const EdgeInsets.only(
                       right: 12,
                     ),
-                    child: IconButton(
-                      onPressed: () {
-                        if (!isSaved) {
-                          BlocProvider.of<SavedQuotesCubit>(context)
-                              .saveQuotes(quote: widget.quoteModel);
+                    child: BlocListener<SaveQuotesCubit, SaveQuoteState>(
+                      listener: (context, state) {
+                        if (state is SaveQuoteSuccess) {
+                          showSnackBar(context,
+                              message: 'Quote Saved Successfully');
+                        } else if (state is SaveQuoteFailure) {
+                          showSnackBar(context,
+                              message: 'Failed to Save Quote');
                         }
                       },
-                      icon: isSaved
-                          ? const Icon(Icons.bookmark)
-                          : const Icon(Icons.bookmark_border),
+                      child: IconButton(
+                        onPressed: () {
+                          if (!isSaved) {
+                            BlocProvider.of<SaveQuotesCubit>(context)
+                                .saveQuotes(quote: widget.quoteModel);
+                          } else {
+                            widget.quoteModel.delete();
+                          }
+                        },
+                        icon: isSaved
+                            ? const Icon(Icons.bookmark)
+                            : const Icon(Icons.bookmark_border),
+                      ),
                     ),
                   )
                 ],

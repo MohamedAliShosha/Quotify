@@ -1,5 +1,7 @@
 import 'package:hive_flutter/hive_flutter.dart';
 
+part 'quotes_model.g.dart';
+
 @HiveType(typeId: 0)
 class QuotesModel extends HiveObject {
   @HiveField(0)

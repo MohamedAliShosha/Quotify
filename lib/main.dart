@@ -6,6 +6,7 @@ import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/utils/constants.dart';
 import 'package:starter_template/core/utils/service_locator.dart';
+import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/quotes/data/repos/quotes_repo_implement.dart';
 import 'package:starter_template/features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
 import 'package:starter_template/features/saved_quotes/data/repos/save_quote_repo_implement.dart';
@@ -24,7 +25,7 @@ class QuotesApp extends StatelessWidget {
           ),
         ),
         BlocProvider(
-          create: (context) => SavedQuotesCubit(
+          create: (context) => SaveQuotesCubit(
             getIt<SaveQuoteRepoImplement>(),
           ),
         ),
@@ -45,6 +46,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppInitializers.initializeFirebase();
   await AppInitializers.initializeHive();
+  Hive.registerAdapter(QuotesModelAdapter());
   await Hive.openBox(Constants.kSavedQuotesBox); // Open Hive Box
   setUpServiceLocator();
   runApp(const QuotesApp());
