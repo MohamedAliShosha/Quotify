@@ -6,6 +6,7 @@ import 'package:starter_template/features/Auth/SignIn/data/repos/sign_in_repo_im
 import 'package:starter_template/features/Auth/SignIn/presentation/manager/Sign_In_cubit/sign_in_cubit.dart';
 import 'package:starter_template/features/Auth/SignUp/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:starter_template/features/quotes/data/repos/quotes_repo_implement.dart';
+import 'package:starter_template/features/saved_quotes/data/repos/save_quote_repo_implement.dart';
 
 //  Create a global instance of GetIt to be used throughout the app
 final getIt = GetIt.instance;
@@ -18,11 +19,15 @@ void setUpServiceLocator() {
   */
   getIt.registerSingleton<SignInRepoImplement>(SignInRepoImplement());
   getIt.registerSingleton<SignUpRepoImplement>(SignUpRepoImplement());
+  getIt.registerSingleton<ApiServices>(
+    ApiServices(
+      Dio(),
+    ),
+  );
+  getIt.registerSingleton(SaveQuoteRepoImplement());
   getIt.registerSingleton<QuotesRepoImplement>(
     QuotesRepoImplement(
-      ApiServices(
-        Dio(),
-      ),
+      getIt<ApiServices>(),
     ),
   );
   /*

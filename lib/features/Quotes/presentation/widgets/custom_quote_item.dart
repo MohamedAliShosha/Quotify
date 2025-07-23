@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
+import 'package:starter_template/features/saved_quotes/presentation/manager/save_quote/save_quote_cubit.dart';
 
-class CustomQuoteItem extends StatelessWidget {
+class CustomQuoteItem extends StatefulWidget {
   const CustomQuoteItem({
     super.key,
     required this.quoteModel,
   });
 
   final QuotesModel quoteModel;
+
+  @override
+  State<CustomQuoteItem> createState() => _CustomQuoteItemState();
+}
+
+class _CustomQuoteItemState extends State<CustomQuoteItem> {
+  bool isSaved = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +47,7 @@ class CustomQuoteItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                quoteModel.quote ?? 'There is No Quote Available Now',
+                widget.quoteModel.quote ?? 'There is No Quote Available Now',
                 style: AppStyles.styleBoldBlack18,
               ),
               const SizedBox(
@@ -47,7 +56,7 @@ class CustomQuoteItem extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    quoteModel.author ?? 'There is No Author Available',
+                    widget.quoteModel.author ?? 'There is No Author Available',
                     style: AppStyles.styleBoldGrey18,
                   ),
                   const Spacer(),
@@ -56,8 +65,15 @@ class CustomQuoteItem extends StatelessWidget {
                       right: 12,
                     ),
                     child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.bookmark_border),
+                      onPressed: () {
+                        if (!isSaved) {
+                          BlocProvider.of<SavedQuotesCubit>(context)
+                              .saveQuotes(quote: widget.quoteModel);
+                        }
+                      },
+                      icon: isSaved
+                          ? const Icon(Icons.bookmark)
+                          : const Icon(Icons.bookmark_border),
                     ),
                   )
                 ],

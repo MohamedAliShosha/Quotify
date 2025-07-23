@@ -8,6 +8,8 @@ import 'package:starter_template/core/utils/constants.dart';
 import 'package:starter_template/core/utils/service_locator.dart';
 import 'package:starter_template/features/quotes/data/repos/quotes_repo_implement.dart';
 import 'package:starter_template/features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
+import 'package:starter_template/features/saved_quotes/data/repos/save_quote_repo_implement.dart';
+import 'package:starter_template/features/saved_quotes/presentation/manager/save_quote/save_quote_cubit.dart';
 
 class QuotesApp extends StatelessWidget {
   const QuotesApp({super.key});
@@ -19,6 +21,11 @@ class QuotesApp extends StatelessWidget {
         BlocProvider(
           create: (context) => QuotesCubit(
             getIt<QuotesRepoImplement>(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => SavedQuotesCubit(
+            getIt<SaveQuoteRepoImplement>(),
           ),
         ),
       ],
