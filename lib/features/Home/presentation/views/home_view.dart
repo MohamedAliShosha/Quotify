@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:starter_template/core/functions/build_bottom_nav_bar_item.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/features/home/presentation/widgets/home_view_body.dart';
+import 'package:starter_template/features/profile/presentation/views/profile_view.dart';
 import 'package:starter_template/features/quotes/presentation/views/quotes_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -21,7 +22,7 @@ class _HomeViewState extends State<HomeView> {
     HomeViewBody(),
     QuotesView(),
     // SaveQuotesView(), // will be replaced with SavedViewBody
-    Center(child: Text('Profile')), //will be replaced with ProfileViewBody
+    ProfileView(), //will be replaced with ProfileViewBody
   ];
 
   // This function is called when the user clicks on any item in the BottomNavigationBar.
