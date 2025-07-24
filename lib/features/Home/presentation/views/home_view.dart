@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:starter_template/core/functions/build_bottom_nav_bar_item.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
+import 'package:starter_template/features/home/presentation/widgets/home_view_body.dart';
 import 'package:starter_template/features/quotes/presentation/views/quotes_view.dart';
 import 'package:starter_template/features/saved_quotes/presentation/views/save_quotes_view.dart';
 
@@ -18,7 +19,7 @@ class _HomeViewState extends State<HomeView> {
   // This list contains the widgets that will appear in each of the four tabs.
 
   final List<Widget> views = const [
-    HomeView(),
+    HomeViewBody(),
     QuotesView(),
     SaveQuotesView(), // will be replaced with SavedViewBody
     Center(child: Text('Profile')), //will be replaced with ProfileViewBody
