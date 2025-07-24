@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_template/core/functions/show_snack_bar.dart';
 import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/save_quote/save_quote_cubit.dart';
 
 class CustomQuoteItem extends StatefulWidget {
   const CustomQuoteItem({
@@ -20,18 +17,18 @@ class CustomQuoteItem extends StatefulWidget {
 
 class _CustomQuoteItemState extends State<CustomQuoteItem> {
   bool isSaved = false;
-  void toggleSave() async {
-    setState(() {
-      isSaved = !isSaved;
-      if (isSaved) {
-        BlocProvider.of<SaveQuotesCubit>(context)
-            .saveQuotes(quote: widget.quoteModel);
-        showSnackBar(context, message: 'Quote Saved Successfully');
-      } else {
-        showSnackBar(context, message: 'Quote UnSaved Successfully');
-      }
-    });
-  }
+  // void toggleSave() async {
+  //   setState(() {
+  //     isSaved = !isSaved;
+  //     if (isSaved) {
+  //       BlocProvider.of<SaveQuotesCubit>(context)
+  //           .saveQuotes(quote: widget.quoteModel);
+  //       showSnackBar(context, message: 'Quote Saved Successfully');
+  //     } else {
+  //       showSnackBar(context, message: 'Quote UnSaved Successfully');
+  //     }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -72,18 +69,18 @@ class _CustomQuoteItemState extends State<CustomQuoteItem> {
                     widget.quoteModel.author ?? 'There is No Author Available',
                     style: AppStyles.styleBoldGrey18,
                   ),
-                  const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      right: 12,
-                    ),
-                    child: IconButton(
-                      onPressed: toggleSave,
-                      icon: isSaved
-                          ? const Icon(Icons.bookmark)
-                          : const Icon(Icons.bookmark_border),
-                    ),
-                  )
+                  // const Spacer(),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(
+                  //     right: 12,
+                  //   ),
+                  //   child: IconButton(
+                  //     onPressed: () {},
+                  //     icon: isSaved
+                  //         ? const Icon(Icons.bookmark)
+                  //         : const Icon(Icons.bookmark_border),
+                  //   ),
+                  // )
                 ],
               ),
             ],

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/quotes/presentation/widgets/custom_quote_item.dart';
 
-class QuotesListView extends StatelessWidget {
-  const QuotesListView({
+class FetchedQuotesListView extends StatelessWidget {
+  const FetchedQuotesListView({
     super.key,
     required this.quotes,
   });

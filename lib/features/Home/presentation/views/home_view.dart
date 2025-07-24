@@ -3,7 +3,6 @@ import 'package:starter_template/core/functions/build_bottom_nav_bar_item.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/features/home/presentation/widgets/home_view_body.dart';
 import 'package:starter_template/features/quotes/presentation/views/quotes_view.dart';
-import 'package:starter_template/features/saved_quotes/presentation/views/save_quotes_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -21,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
   final List<Widget> views = const [
     HomeViewBody(),
     QuotesView(),
-    SaveQuotesView(), // will be replaced with SavedViewBody
+    // SaveQuotesView(), // will be replaced with SavedViewBody
     Center(child: Text('Profile')), //will be replaced with ProfileViewBody
   ];
 
@@ -70,10 +69,10 @@ class _HomeViewState extends State<HomeView> {
           icon: const Icon(Icons.format_quote),
           label: 'Quotes',
         ),
-        buildBottomNavBarItem(
-          icon: const Icon(Icons.bookmark),
-          label: 'Saved',
-        ),
+        // buildBottomNavBarItem(
+        //   icon: const Icon(Icons.bookmark),
+        //   label: 'Saved',
+        // ),
         buildBottomNavBarItem(
           icon: const Icon(Icons.person),
           label: 'Profile',

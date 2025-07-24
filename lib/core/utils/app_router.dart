@@ -6,8 +6,8 @@ import 'package:starter_template/features/auth/SignUp/presentation/manager/sign_
 import 'package:starter_template/features/auth/SignUp/presentation/views/sign_up_view.dart';
 import 'package:starter_template/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:starter_template/features/home/presentation/views/home_view.dart';
+import 'package:starter_template/features/profile/presentation/views/profile_view.dart';
 import 'package:starter_template/features/quotes/presentation/views/quotes_view.dart';
-import 'package:starter_template/features/saved_quotes/presentation/views/save_quotes_view.dart';
 
 abstract class AppRouter {
   // The first thing when creating routers is declaring routes variables
@@ -56,9 +56,9 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: '/saveQuotesView',
+        path: '/profileView',
         builder: (context, state) {
-          return const SaveQuotesView();
+          return const ProfileView();
         },
       ),
     ],
