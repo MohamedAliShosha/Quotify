@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:starter_template/core/utils/colors_manager.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar(
@@ -14,7 +15,8 @@ class CustomAppBar extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 28),
+          style:
+              const TextStyle(fontSize: 28, color: ColorsManager.kWhiteColor),
         ),
         // const Spacer(),
         // CustomIcon(

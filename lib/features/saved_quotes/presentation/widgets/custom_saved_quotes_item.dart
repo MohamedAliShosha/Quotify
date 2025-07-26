@@ -4,32 +4,14 @@ import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/save_quotes/save_quotes_cubit.dart';
 
-class CustomQuoteItem extends StatefulWidget {
-  const CustomQuoteItem({
+class CustomSavedQuotesItem extends StatelessWidget {
+  const CustomSavedQuotesItem({
     super.key,
     required this.quoteModel,
   });
 
   final QuotesModel quoteModel;
-
-  @override
-  State<CustomQuoteItem> createState() => _CustomQuoteItemState();
-}
-
-class _CustomQuoteItemState extends State<CustomQuoteItem> {
-  bool isSaved = false;
-
-  void toggleSave() {
-    if (!isSaved) {
-      BlocProvider.of<SaveQuotesCubit>(context).saveQuotes(widget.quoteModel);
-      BlocProvider.of<ReadQuotesCubit>(context).readAllQuotes();
-      setState(() {
-        isSaved = true;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,30 +40,36 @@ class _CustomQuoteItemState extends State<CustomQuoteItem> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                widget.quoteModel.quote ?? 'There is No Quote Available Now',
+                quoteModel.quote ?? 'There is No Quote Available Now',
                 style: AppStyles.styleBoldBlack18,
               ),
-              const SizedBox(height: 4),
+              const SizedBox(
+                height: 4,
+              ),
               Row(
                 children: [
                   Text(
-                    widget.quoteModel.author ?? 'There is No Author Available',
+                    quoteModel.author ?? 'There is No Author Available',
                     style: AppStyles.styleBoldGrey18,
                   ),
                   const Spacer(),
                   Padding(
-                    padding: const EdgeInsets.only(right: 12),
-                    child: IconButton(
-                      onPressed: toggleSave,
-                      icon: isSaved
-                          ? const Icon(Icons.bookmark)
-                          : const Icon(Icons.bookmark_border),
+                    padding: const EdgeInsets.only(
+                      right: 12,
                     ),
-                  ),
+                    child: IconButton(
+                      onPressed: () async {
+                        await quoteModel.delete();
+                        BlocProvider.of<ReadQuotesCubit>(context)
+                            .readAllQuotes();
+                      },
+                      icon: const Icon(Icons.delete),
+                    ),
+                  )
                 ],
               ),
             ],
-          ),
+          )
         ],
       ),
     );

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starter_template/core/functions/build_bottom_nav_bar_item.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/features/home/presentation/widgets/home_view_body.dart';
 import 'package:starter_template/features/profile/presentation/views/profile_view.dart';
 import 'package:starter_template/features/quotes/presentation/views/quotes_view.dart';
+import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
 import 'package:starter_template/features/saved_quotes/presentation/views/saved_quotes_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -30,6 +32,9 @@ class _HomeViewState extends State<HomeView> {
   // It refreshes currentIndex and thus the appropriate page appears in IndexedStack.
   void onTap(int index) {
     setState(() {
+      if (index == 2) {
+        context.read<ReadQuotesCubit>().readAllQuotes();
+      }
       currentIndex = index;
     });
   }

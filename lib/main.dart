@@ -7,9 +7,12 @@ import 'package:starter_template/core/utils/app_initializers.dart';
 import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/utils/constants.dart';
+import 'package:starter_template/core/utils/simple_bloc_observer.dart';
 import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/quotes/data/repos/quotes_repo_implement.dart';
 import 'package:starter_template/features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
+import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
+import 'package:starter_template/features/saved_quotes/presentation/manager/save_quotes/save_quotes_cubit.dart';
 
 class QuotesApp extends StatelessWidget {
   const QuotesApp({super.key});
@@ -27,6 +30,12 @@ class QuotesApp extends StatelessWidget {
             ),
           ),
         ),
+        BlocProvider(
+          create: (context) => SaveQuotesCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ReadQuotesCubit(),
+        ),
       ],
       child: MaterialApp.router(
         theme: ThemeData(
@@ -43,9 +52,10 @@ class QuotesApp extends StatelessWidget {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppInitializers.initializeFirebase();
+  Bloc.observer = SimpleBlocObserver();
   // await setUpServiceLocator();
   await AppInitializers.initializeHive();
   Hive.registerAdapter(QuotesModelAdapter());
-  await Hive.openBox(Constants.kSavedQuotesBox); // Open Hive Box
+  await Hive.openBox<QuotesModel>(Constants.kSavedQuotesBox); // Open Hive Box
   runApp(const QuotesApp());
 }

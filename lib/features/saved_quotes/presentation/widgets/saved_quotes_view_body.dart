@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:starter_template/core/widgets/custom_app_bar.dart';
 import 'package:starter_template/features/saved_quotes/presentation/widgets/saved_quotes_list_view.dart';
 
-class SavedQuotesViewBody extends StatelessWidget {
+class SavedQuotesViewBody extends StatefulWidget {
   const SavedQuotesViewBody({super.key});
 
+  @override
+  State<SavedQuotesViewBody> createState() => _SavedQuotesViewBodyState();
+}
+
+class _SavedQuotesViewBodyState extends State<SavedQuotesViewBody> {
   @override
   Widget build(BuildContext context) {
     return const Padding(
@@ -15,7 +20,7 @@ class SavedQuotesViewBody extends StatelessWidget {
             height: 50,
           ),
           CustomAppBar(
-            title: 'Your Quotes',
+            title: 'Your Saved Quotes',
           ),
           Expanded(
             child: SavedQuotesListView(),
