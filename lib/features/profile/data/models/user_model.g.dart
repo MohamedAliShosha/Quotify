@@ -1,35 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'quotes_model.dart';
+part of 'user_model.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class QuotesModelAdapter extends TypeAdapter<QuotesModel> {
+class UserModelAdapter extends TypeAdapter<UserModel> {
   @override
   final int typeId = 0;
 
   @override
-  QuotesModel read(BinaryReader reader) {
+  UserModel read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return QuotesModel(
-      quote: fields[0] as String?,
-      author: fields[1] as String?,
+    return UserModel(
+      userName: fields[0] as String?,
+      email: fields[1] as String?,
     );
   }
 
   @override
-  void write(BinaryWriter writer, QuotesModel obj) {
+  void write(BinaryWriter writer, UserModel obj) {
     writer
       ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.quote)
+      ..write(obj.userName)
       ..writeByte(1)
-      ..write(obj.author);
+      ..write(obj.email);
   }
 
   @override
@@ -38,7 +38,7 @@ class QuotesModelAdapter extends TypeAdapter<QuotesModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is QuotesModelAdapter &&
+      other is UserModelAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
