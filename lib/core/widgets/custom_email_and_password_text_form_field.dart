@@ -8,6 +8,7 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
   CustomEmailAndPasswordTextFormField(
       {super.key,
       this.onChanged,
+      this.onSaved,
       this.hintText,
       this.obscuredText = false,
       required this.labelText,
@@ -18,6 +19,7 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
   String? hintText;
   bool? obscuredText; // I gave  it a default value of false
   final Widget? suffixIcon;
+  void Function(String?)? onSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +40,7 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
           }
         },
         onChanged: onChanged,
+        onSaved: onSaved,
         decoration: InputDecoration(
           suffixIcon: suffixIcon,
           labelText: labelText,

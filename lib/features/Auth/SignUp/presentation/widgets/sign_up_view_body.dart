@@ -23,6 +23,7 @@ class SignUpViewBody extends StatefulWidget {
 class _SignUpViewBodyState extends State<SignUpViewBody> {
   String? email;
 
+  String? userName;
   String? password;
 
   bool isLoading = false;
@@ -77,10 +78,20 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       height: 20,
                     ),
                     CustomEmailAndPasswordTextFormField(
-                      labelText: 'Enter your email',
-                      onChanged: (data) {
-                        email = data;
+                      onSaved: (value) {
+                        userName = value;
                       },
+                      labelText: 'Enter your username',
+                      hintText: 'Username',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    CustomEmailAndPasswordTextFormField(
+                      onSaved: (value) {
+                        email = value;
+                      },
+                      labelText: 'Enter your email',
                       hintText: 'Email',
                     ),
                     const SizedBox(
@@ -106,7 +117,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       obscuredText:
                           !isPasswordVisible, // If the isPasswordVisible is true it will be false and the password is hidden
                       onChanged: (data) {
-                        password = data;
+                        userName = data;
                       },
                       hintText: 'Password',
                     ),
@@ -117,8 +128,9 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       onTap: () async {
                         // Checks if all form fields (email and password) pass their validation rules.
                         if (formKey.currentState!.validate()) {
+                          formKey.currentState!.save();
                           BlocProvider.of<SignUpCubit>(context)
-                              .signUp(email: email!, password: password!);
+                              .signUp(email: email!, password: userName!);
                         }
                       },
                       buttonTitle: 'Sign Up',
