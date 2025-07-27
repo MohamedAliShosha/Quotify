@@ -11,7 +11,7 @@ class SaveQuotesCubit extends Cubit<SaveQuotesState> {
 
   void saveQuotes(QuotesModel quote) async {
     try {
-      var box = Hive.box<QuotesModel>(Constants.kSavedQuotesBox);
+      var box = Hive.box<QuotesModel>(Constants.kUserBox);
       await box.add(quote);
       emit(SaveQuotesSuccess());
     } catch (e) {

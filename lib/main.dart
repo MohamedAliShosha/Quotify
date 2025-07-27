@@ -8,6 +8,7 @@ import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/utils/constants.dart';
 import 'package:starter_template/core/utils/simple_bloc_observer.dart';
+import 'package:starter_template/features/profile/data/models/user_model.dart';
 import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/quotes/data/repos/quotes_repo_implement.dart';
 import 'package:starter_template/features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
@@ -56,6 +57,8 @@ void main() async {
   // await setUpServiceLocator();
   await AppInitializers.initializeHive();
   Hive.registerAdapter(QuotesModelAdapter());
-  await Hive.openBox<QuotesModel>(Constants.kSavedQuotesBox); // Open Hive Box
+  Hive.registerAdapter(UserModelAdapter());
+  await Hive.openBox<UserModel>(Constants.kUserBox);
+  await Hive.openBox<QuotesModel>(Constants.kUserBox); // Open Hive Box
   runApp(const QuotesApp());
 }
