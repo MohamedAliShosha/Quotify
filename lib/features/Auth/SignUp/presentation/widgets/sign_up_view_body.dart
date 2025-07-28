@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -8,9 +9,8 @@ import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/core/widgets/custom_email_and_password_text_form_field.dart';
 import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_header_text.dart';
-import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_redirect_button.dart';
-import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_redirect_text.dart';
 import 'package:starter_template/features/auth/SignUp/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
+import 'package:starter_template/features/auth/SignUp/presentation/widgets/custom_redirect_row.dart';
 import 'package:starter_template/features/profile/presentation/manager/user_data/user_data_cubit.dart';
 
 // ignore: must_be_immutable
@@ -97,7 +97,6 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       height: 20,
                     ),
                     CustomEmailAndPasswordTextFormField(
-                      controller: _userNameController,
                       onSaved: (value) {
                         userName = value?.trim();
                       },
@@ -108,7 +107,6 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       height: 20,
                     ),
                     CustomEmailAndPasswordTextFormField(
-                      controller: _emailController,
                       onSaved: (value) {
                         email = value?.trim();
                       },
@@ -119,7 +117,6 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       height: 20,
                     ),
                     CustomEmailAndPasswordTextFormField(
-                      controller: _passwordController,
                       suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -157,25 +154,21 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                               password: password!);
                           await BlocProvider.of<UserDataCubit>(context)
                               .saveUserData(userName: userName!, email: email!);
+
+                          final user = FirebaseAuth.instance.currentUser;
+                          if (user != null) {
+                            await context.read<UserDataCubit>().getUser();
+                            GoRouter.of(context).push(AppRouter.kHomeView);
+                          }
                           clearFields(); // To clear the fields
                         }
                       },
                       buttonTitle: 'Sign Up',
                     ),
                     const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const CustomRedirectText(
-                          redirectText: 'Already have an account? ',
-                        ),
-                        CustomRedirectButton(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          redirectText: 'Sign In',
-                        ),
-                      ],
+                    const CustomRedirectRow(
+                      redirectButtonText: 'Sign In',
+                      redirectText: 'Already have an account?',
                     ),
                   ],
                 ),

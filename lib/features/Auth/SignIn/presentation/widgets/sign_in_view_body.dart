@@ -75,108 +75,102 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               backgroundColor: ColorsManager.kBlackColor,
               color: ColorsManager.kPrimaryColor),
           inAsyncCall: isLoading,
-          child: Scaffold(
-            body: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Form(
-                key: formKey,
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(
-                        height: 200,
-                      ),
-                      const CustomHeaderText(
-                        text: 'Hello,',
-                      ),
-                      const CustomHeaderText(
-                        text: 'Welcome Back!',
-                        fontSize: 24,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CustomEmailAndPasswordTextFormField(
-                        labelText: 'Enter your userName',
-                        controller: _userNameController,
-                        onChanged: (data) {
-                          userName = data
-                              .trim(); // .trim() is used to remove accidentally extra spaces add by user either trailing or leading
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Form(
+              key: formKey,
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: 200,
+                    ),
+                    const CustomHeaderText(
+                      text: 'Hello,',
+                    ),
+                    const CustomHeaderText(
+                      text: 'Welcome Back!',
+                      fontSize: 24,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    CustomEmailAndPasswordTextFormField(
+                      labelText: 'Enter your userName',
+                      onChanged: (data) {
+                        userName = data
+                            .trim(); // .trim() is used to remove accidentally extra spaces add by user either trailing or leading
+                      },
+                      hintText: 'Email',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    CustomEmailAndPasswordTextFormField(
+                      labelText: 'Enter your email',
+                      onChanged: (data) {
+                        email = data.trim();
+                      },
+                      hintText: 'Email',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    CustomEmailAndPasswordTextFormField(
+                      suffixIcon: IconButton(
+                        color: ColorsManager.kPrimaryColor,
+                        onPressed: () {
+                          setState(() {
+                            isPasswordVisible = !isPasswordVisible;
+                          });
                         },
-                        hintText: 'Email',
+                        icon: isPasswordVisible
+                            ? const Icon(Icons.visibility)
+                            : const Icon(Icons.visibility_off),
                       ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CustomEmailAndPasswordTextFormField(
-                        labelText: 'Enter your email',
-                        controller: _emailController,
-                        onChanged: (data) {
-                          email = data.trim();
-                        },
-                        hintText: 'Email',
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      CustomEmailAndPasswordTextFormField(
-                        controller: _passwordController,
-                        suffixIcon: IconButton(
-                          color: ColorsManager.kPrimaryColor,
-                          onPressed: () {
-                            setState(() {
-                              isPasswordVisible = !isPasswordVisible;
-                            });
-                          },
-                          icon: isPasswordVisible
-                              ? const Icon(Icons.visibility)
-                              : const Icon(Icons.visibility_off),
+                      labelText: 'Enter your password',
+                      obscuredText:
+                          !isPasswordVisible, // changing the value of the obscureText to true
+                      onChanged: (data) {
+                        password = data.trim();
+                      },
+                      hintText: 'Password',
+                    ),
+                    const SizedBox(
+                      height: 100,
+                    ),
+                    CustomButton(
+                      onTap: () async {
+                        // Checks if all form fields (email and password) pass their validation rules.
+                        if (formKey.currentState!.validate()) {
+                          await BlocProvider.of<SignInCubit>(context)
+                              .signIn(email: email!, password: password!);
+                          await BlocProvider.of<UserDataCubit>(context)
+                              .saveUserData(userName: userName!, email: email!);
+                          clearFields();
+                        }
+                      },
+                      buttonTitle: 'Sign In',
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const CustomRedirectText(
+                          redirectText: 'don\'t have an account? ',
                         ),
-                        labelText: 'Enter your password',
-                        obscuredText:
-                            !isPasswordVisible, // changing the value of the obscureText to true
-                        onChanged: (data) {
-                          password = data.trim();
-                        },
-                        hintText: 'Password',
-                      ),
-                      const SizedBox(
-                        height: 100,
-                      ),
-                      CustomButton(
-                        onTap: () async {
-                          // Checks if all form fields (email and password) pass their validation rules.
-                          if (formKey.currentState!.validate()) {
-                            await BlocProvider.of<SignInCubit>(context)
-                                .signIn(email: email!, password: password!);
-                            await BlocProvider.of<UserDataCubit>(context)
-                                .saveUserData(
-                                    userName: userName!, email: email!);
-                            clearFields();
-                          }
-                        },
-                        buttonTitle: 'Sign In',
-                      ),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const CustomRedirectText(
-                            redirectText: 'don\'t have an account? ',
-                          ),
-                          CustomRedirectButton(
-                            onTap: () {
-                              GoRouter.of(context).push(AppRouter.kSignUpView);
-                            },
-                            redirectText: 'Sign Up',
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        CustomRedirectButton(
+                          onTap: () {
+                            GoRouter.of(context).push(AppRouter.kSignUpView);
+                          },
+                          redirectButtonText: 'Sign Up',
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),

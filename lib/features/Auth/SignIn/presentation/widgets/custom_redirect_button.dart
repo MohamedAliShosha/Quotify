@@ -5,18 +5,18 @@ class CustomRedirectButton extends StatelessWidget {
   const CustomRedirectButton({
     super.key,
     this.onTap,
-    required this.redirectText,
+    required this.redirectButtonText,
   });
 
   final void Function()? onTap;
-  final String redirectText;
+  final String redirectButtonText;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Text(
-        redirectText,
+        redirectButtonText,
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           color: ColorsManager.kPrimaryColor,

@@ -8,7 +8,7 @@ class SimpleBlocObserver
 {
   @override
   void onChange(BlocBase bloc, Change change) {
-    debugPrint('chang = $change');
+    debugPrint('change = $change');
   }
 
   @override

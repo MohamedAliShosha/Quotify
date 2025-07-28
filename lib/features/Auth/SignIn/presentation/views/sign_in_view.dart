@@ -10,6 +10,8 @@ class SignInView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset:
+          true, // to avoid the keyboard from overlapping the text fields
       // Move the bloc provider from here to the SignInView that exists in AppRouter for better arch
       body: BlocProvider(
         create: (context) => SignInCubit(

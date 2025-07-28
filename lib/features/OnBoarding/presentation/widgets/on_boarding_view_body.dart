@@ -66,12 +66,12 @@ class OnboardingViewBody extends StatelessWidget {
             durationInSeconds: 3,
             child: CustomButton(
               buttonTitle: 'Get Started',
-              onTap: () {
+              onTap: () async {
                 // Check if the user is already signed in or have an account
                 // Navigate directly to home view
                 final user = FirebaseAuth.instance.currentUser;
                 if (user != null) {
-                  context
+                  await context
                       .read<UserDataCubit>()
                       .getUser(); // تحميل البيانات أولًا
 
