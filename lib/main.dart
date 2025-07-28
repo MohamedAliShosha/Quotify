@@ -1,17 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:starter_template/core/utils/api_service.dart';
 import 'package:starter_template/core/utils/app_initializers.dart';
 import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/core/utils/constants.dart';
 import 'package:starter_template/core/utils/simple_bloc_observer.dart';
-import 'package:starter_template/features/profile/data/models/user_model.dart';
 import 'package:starter_template/features/profile/data/services/user_data_service.dart';
 import 'package:starter_template/features/profile/presentation/manager/user_data/user_data_cubit.dart';
-import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/quotes/data/repos/quotes_repo_implement.dart';
 import 'package:starter_template/features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
 import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
@@ -60,12 +56,12 @@ class QuotesApp extends StatelessWidget {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppInitializers.initializeFirebase();
+  await AppInitializers.initializeHive();
   Bloc.observer = SimpleBlocObserver();
   // await setUpServiceLocator();
-  await AppInitializers.initializeHive();
-  Hive.registerAdapter(QuotesModelAdapter());
-  Hive.registerAdapter(UserModelAdapter());
-  await Hive.openBox<UserModel>(Constants.kUserBox);
-  await Hive.openBox<QuotesModel>(Constants.kSavedQuotesBox); // Open Hive Box
+  AppInitializers.registerUserModelAdapter();
+  AppInitializers.registerQuotesModelAdapter();
+  await AppInitializers.openUserBox();
+  await AppInitializers.openSavedQuotesBox();
   runApp(const QuotesApp());
 }
