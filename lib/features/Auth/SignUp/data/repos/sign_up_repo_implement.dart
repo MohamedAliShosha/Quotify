@@ -32,9 +32,6 @@ class SignUpRepoImplement implements SignUpRepo {
         return Left(ServerFailure('User doesn\'t exists after sign-up.'));
       }
 
-      await user.updateDisplayName(
-          userName); // update user name in firebase to be the one that the user entered
-
       return Right(user);
     } on FirebaseAuthException catch (error) {
       return Left(ServerFailure.fromAuth(error));
