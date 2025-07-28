@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
 
 class CustomSavedQuotesItem extends StatelessWidget {
   const CustomSavedQuotesItem({
@@ -53,18 +51,18 @@ class CustomSavedQuotesItem extends StatelessWidget {
                     style: AppStyles.styleBoldGrey18,
                   ),
                   const Spacer(),
-                  Padding(
-                    padding: const EdgeInsets.only(
+                  const Padding(
+                    padding: EdgeInsets.only(
                       right: 12,
                     ),
-                    child: IconButton(
-                      onPressed: () async {
-                        await quoteModel.delete();
-                        BlocProvider.of<ReadQuotesCubit>(context)
-                            .readAllQuotes();
-                      },
-                      icon: const Icon(Icons.delete),
-                    ),
+                    // child: IconButton(
+                    //   onPressed: () async {
+                    //     await quoteModel.delete();
+                    //     BlocProvider.of<ReadQuotesCubit>(context)
+                    //         .readAllQuotes();
+                    //   },
+                    //   icon: const Icon(Icons.delete),
+                    // ),
                   )
                 ],
               ),

@@ -37,7 +37,6 @@ class ProfileViewBody extends StatelessWidget {
               GestureDetector(
                 onTap: () async {
                   await context.read<UserDataCubit>().clearUser();
-                  // استخدم pushReplacement لتجنب الرجوع إلى صفحة البروفايل بعد تسجيل الخروج
                   GoRouter.of(context).go(AppRouter.kSignInView);
                 },
                 child: const CustomUserInfoContainer(

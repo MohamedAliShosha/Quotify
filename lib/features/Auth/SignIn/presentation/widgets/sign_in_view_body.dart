@@ -23,7 +23,7 @@ class SignInViewBody extends StatefulWidget {
 class _SignInViewBodyState extends State<SignInViewBody> {
   bool isLoading = false; // This is a default value
   bool isPasswordVisible = false;
-  String? email, password;
+  String? email, password, userName;
   GlobalKey<FormState> formKey = GlobalKey();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -55,10 +55,6 @@ class _SignInViewBodyState extends State<SignInViewBody> {
         });
 
         if (state is SignInSuccess) {
-          await context.read<UserDataCubit>().getUser(
-              // userName: state.user.displayName ?? 'No User Name Available',
-              // email: state.user.email ?? 'No Email Available',
-              );
           showSnackBar(context, message: 'Sign In Successfully!');
           GoRouter.of(context).push(AppRouter.kHomeView);
         } else if (state is SignInFailure) {
@@ -91,6 +87,17 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                       const CustomHeaderText(
                         text: 'Welcome Back!',
                         fontSize: 24,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      CustomEmailAndPasswordTextFormField(
+                        labelText: 'Enter your userName',
+                        controller: _userNameController,
+                        onChanged: (data) {
+                          userName = data;
+                        },
+                        hintText: 'Email',
                       ),
                       const SizedBox(
                         height: 20,
@@ -136,6 +143,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                           if (formKey.currentState!.validate()) {
                             await BlocProvider.of<SignInCubit>(context)
                                 .signIn(email: email!, password: password!);
+                            await BlocProvider.of<UserDataCubit>(context)
+                                .saveUserData(
+                                    userName: userName!, email: email!);
                             clearFields();
                           }
                         },
