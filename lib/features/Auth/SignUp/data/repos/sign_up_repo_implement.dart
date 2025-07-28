@@ -8,12 +8,17 @@ class SignUpRepoImplement implements SignUpRepo {
 
   @override
   Future<Either<Failures, User>> signUp(
-      {required String email, required String password}) async {
+      {required String email,
+      required String userName,
+      required String password}) async {
     if (email.isEmpty) {
       return Left(ServerFailure('Email cannot be empty'));
     }
     if (password.isEmpty) {
       return Left(ServerFailure('Password cannot be empty'));
+    }
+    if (userName.isEmpty) {
+      return Left(ServerFailure('UserName cannot be empty'));
     }
 
     try {
@@ -26,6 +31,10 @@ class SignUpRepoImplement implements SignUpRepo {
       if (user == null) {
         return Left(ServerFailure('User doesn\'t exists after sign-up.'));
       }
+
+      await user.updateDisplayName(
+          userName); // update user name in firebase to be the one that the user entered
+
       return Right(user);
     } on FirebaseAuthException catch (error) {
       return Left(ServerFailure.fromAuth(error));

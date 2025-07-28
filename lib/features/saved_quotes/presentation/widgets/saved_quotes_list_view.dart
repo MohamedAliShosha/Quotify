@@ -15,6 +15,7 @@ class SavedQuotesListView extends StatelessWidget {
         if (state is ReadQuotesLoading) {
           return const Center(child: CircularProgressIndicator());
         } else if (state is ReadQuotesError) {
+          print(state.errorMessage);
           return Center(child: Text(state.errorMessage));
         } else if (state is ReadQuotesSuccess) {
           List<QuotesModel> quotes = state.quotes;

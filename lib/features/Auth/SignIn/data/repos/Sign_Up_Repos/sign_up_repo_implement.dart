@@ -8,7 +8,9 @@ class SignUpRepoImplement implements SignUpRepo {
 
   @override
   Future<Either<Failures, User>> signUp(
-      {required String email, required String password}) async {
+      {required String userName,
+      required String email,
+      required String password}) async {
     if (email.isEmpty) {
       return Left(ServerFailure('Email cannot be empty'));
     }

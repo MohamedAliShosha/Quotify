@@ -11,6 +11,7 @@ import 'package:starter_template/features/auth/SignIn/presentation/widgets/custo
 import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_redirect_button.dart';
 import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_redirect_text.dart';
 import 'package:starter_template/features/auth/SignUp/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
+import 'package:starter_template/features/profile/presentation/manager/user_data/user_data_cubit.dart';
 
 // ignore: must_be_immutable
 class SignUpViewBody extends StatefulWidget {
@@ -21,8 +22,12 @@ class SignUpViewBody extends StatefulWidget {
 }
 
 class _SignUpViewBodyState extends State<SignUpViewBody> {
-  String? email;
+  final TextEditingController _emailController = TextEditingController();
 
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  String? email;
   String? userName;
   String? password;
 
@@ -32,6 +37,20 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
       false; // A default value that makes the password Invisible
 
   GlobalKey<FormState> formKey = GlobalKey();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _userNameController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
+  void clearFields() {
+    _emailController.clear();
+    _userNameController.clear();
+    _passwordController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +97,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       height: 20,
                     ),
                     CustomEmailAndPasswordTextFormField(
+                      controller: _userNameController,
                       onSaved: (value) {
                         userName = value;
                       },
@@ -88,6 +108,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       height: 20,
                     ),
                     CustomEmailAndPasswordTextFormField(
+                      controller: _emailController,
                       onSaved: (value) {
                         email = value;
                       },
@@ -98,6 +119,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       height: 20,
                     ),
                     CustomEmailAndPasswordTextFormField(
+                      controller: _passwordController,
                       suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
@@ -117,7 +139,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       obscuredText:
                           !isPasswordVisible, // If the isPasswordVisible is true it will be false and the password is hidden
                       onChanged: (data) {
-                        userName = data;
+                        password = data;
                       },
                       hintText: 'Password',
                     ),
@@ -129,8 +151,13 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                         // Checks if all form fields (email and password) pass their validation rules.
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          BlocProvider.of<SignUpCubit>(context)
-                              .signUp(email: email!, password: userName!);
+                          await BlocProvider.of<SignUpCubit>(context).signUp(
+                              userName: userName!,
+                              email: email!,
+                              password: password!);
+                          await BlocProvider.of<UserDataCubit>(context)
+                              .saveUserData(userName: userName!, email: email!);
+                          clearFields(); // To clear the fields
                         }
                       },
                       buttonTitle: 'Sign Up',

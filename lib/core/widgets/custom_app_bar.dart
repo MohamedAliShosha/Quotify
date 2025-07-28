@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar(
-      {super.key, required this.title, this.icon, this.onPressed});
+  const CustomAppBar({super.key, this.title, this.icon, this.onPressed});
 
-  final String title;
+  final String? title;
   final IconData? icon;
   final void Function()? onPressed;
 
@@ -14,7 +13,7 @@ class CustomAppBar extends StatelessWidget {
     return Row(
       children: [
         Text(
-          title,
+          title!,
           style:
               const TextStyle(fontSize: 28, color: ColorsManager.kWhiteColor),
         ),

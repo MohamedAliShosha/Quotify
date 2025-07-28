@@ -12,6 +12,7 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
       this.hintText,
       this.obscuredText = false,
       required this.labelText,
+      this.controller,
       this.suffixIcon});
 
   final String labelText;
@@ -20,6 +21,7 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
   bool? obscuredText; // I gave  it a default value of false
   final Widget? suffixIcon;
   void Function(String?)? onSaved;
+  TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {

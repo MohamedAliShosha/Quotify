@@ -11,6 +11,7 @@ import 'package:starter_template/features/auth/SignIn/presentation/manager/Sign_
 import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_header_text.dart';
 import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_redirect_button.dart';
 import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_redirect_text.dart';
+import 'package:starter_template/features/profile/presentation/manager/user_data/user_data_cubit.dart';
 
 class SignInViewBody extends StatefulWidget {
   const SignInViewBody({super.key});
@@ -24,18 +25,40 @@ class _SignInViewBodyState extends State<SignInViewBody> {
   bool isPasswordVisible = false;
   String? email, password;
   GlobalKey<FormState> formKey = GlobalKey();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
+
+  @override
+  // dispose role is to free the memory of the controller when the widget is disposed
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _userNameController.dispose();
+    super.dispose();
+  }
+
+  void clearFields() {
+    _emailController.clear();
+    _passwordController.clear();
+    _userNameController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
     // Suggested question => Is it true to use the bloc consumer here or not? yes it is true
     return BlocConsumer<SignInCubit, SignInState>(
-      listener: (context, state) {
+      listener: (context, state) async {
         setState(() {
           isLoading = state
               is SignInLoading; // If the state is SignInLoading => isLoading will be true else it will be false.
         });
 
         if (state is SignInSuccess) {
+          await context.read<UserDataCubit>().getUser(
+              // userName: state.user.displayName ?? 'No User Name Available',
+              // email: state.user.email ?? 'No Email Available',
+              );
           showSnackBar(context, message: 'Sign In Successfully!');
           GoRouter.of(context).push(AppRouter.kHomeView);
         } else if (state is SignInFailure) {
@@ -74,6 +97,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                       ),
                       CustomEmailAndPasswordTextFormField(
                         labelText: 'Enter your email',
+                        controller: _emailController,
                         onChanged: (data) {
                           email = data;
                         },
@@ -83,6 +107,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                         height: 20,
                       ),
                       CustomEmailAndPasswordTextFormField(
+                        controller: _passwordController,
                         suffixIcon: IconButton(
                           color: ColorsManager.kPrimaryColor,
                           onPressed: () {
@@ -109,8 +134,9 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                         onTap: () async {
                           // Checks if all form fields (email and password) pass their validation rules.
                           if (formKey.currentState!.validate()) {
-                            BlocProvider.of<SignInCubit>(context)
+                            await BlocProvider.of<SignInCubit>(context)
                                 .signIn(email: email!, password: password!);
+                            clearFields();
                           }
                         },
                         buttonTitle: 'Sign In',

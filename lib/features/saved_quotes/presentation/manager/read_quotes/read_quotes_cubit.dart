@@ -8,7 +8,7 @@ class ReadQuotesCubit extends Cubit<ReadQuotesState> {
   ReadQuotesCubit() : super(ReadQuotesInitial());
 
   void readAllQuotes() {
-    var box = Hive.box<QuotesModel>(Constants.kUserBox);
+    var box = Hive.box<QuotesModel>(Constants.kSavedQuotesBox);
     List<QuotesModel> quotes = box.values.toList().reversed.toList();
     emit(ReadQuotesSuccess(quotes: quotes));
   }

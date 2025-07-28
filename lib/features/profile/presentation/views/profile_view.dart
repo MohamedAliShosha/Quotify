@@ -1,29 +1,19 @@
 import 'package:flutter/material.dart';
 
+import 'package:starter_template/core/utils/colors_manager.dart';
+import 'package:starter_template/features/profile/presentation/widgets/profile_view_body.dart';
+
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: ProfileViewBody(),
-    );
-  }
-}
-
-class ProfileViewBody extends StatelessWidget {
-  const ProfileViewBody({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Center(
-          child: Text('Profile View',
-              style: TextStyle(fontSize: 24, color: Colors.red)),
-        ),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorsManager.kBlackColor,
+        elevation: 0,
+      ),
+      body: const ProfileViewBody(),
     );
   }
 }
