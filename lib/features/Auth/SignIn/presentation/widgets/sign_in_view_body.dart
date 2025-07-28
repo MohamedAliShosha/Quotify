@@ -30,6 +30,14 @@ class _SignInViewBodyState extends State<SignInViewBody> {
   final TextEditingController _userNameController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    _userNameController.clear();
+    _emailController.clear();
+    _passwordController.clear();
+  }
+
+  @override
   // dispose role is to free the memory of the controller when the widget is disposed
   void dispose() {
     _emailController.dispose();
@@ -95,7 +103,8 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                         labelText: 'Enter your userName',
                         controller: _userNameController,
                         onChanged: (data) {
-                          userName = data;
+                          userName = data
+                              .trim(); // .trim() is used to remove accidentally extra spaces add by user either trailing or leading
                         },
                         hintText: 'Email',
                       ),
@@ -106,7 +115,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                         labelText: 'Enter your email',
                         controller: _emailController,
                         onChanged: (data) {
-                          email = data;
+                          email = data.trim();
                         },
                         hintText: 'Email',
                       ),
@@ -130,7 +139,7 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                         obscuredText:
                             !isPasswordVisible, // changing the value of the obscureText to true
                         onChanged: (data) {
-                          password = data;
+                          password = data.trim();
                         },
                         hintText: 'Password',
                       ),

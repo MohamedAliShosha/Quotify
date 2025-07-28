@@ -1,9 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/features/onboarding/presentation/widgets/custom_animated_opacity.dart';
+import 'package:starter_template/features/profile/presentation/manager/user_data/user_data_cubit.dart';
 
 class OnboardingViewBody extends StatelessWidget {
   const OnboardingViewBody({
@@ -63,7 +66,20 @@ class OnboardingViewBody extends StatelessWidget {
             durationInSeconds: 3,
             child: CustomButton(
               buttonTitle: 'Get Started',
-              onTap: () => GoRouter.of(context).push(AppRouter.kSignInView),
+              onTap: () {
+                // Check if the user is already signed in or have an account
+                // Navigate directly to home view
+                final user = FirebaseAuth.instance.currentUser;
+                if (user != null) {
+                  context
+                      .read<UserDataCubit>()
+                      .getUser(); // تحميل البيانات أولًا
+
+                  GoRouter.of(context).push(AppRouter.kHomeView);
+                } else {
+                  GoRouter.of(context).push(AppRouter.kSignInView);
+                }
+              },
             ),
           ),
           const SizedBox(

@@ -28,6 +28,7 @@ class CustomEmailAndPasswordTextFormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 10, right: 10),
       child: TextFormField(
+        controller: controller,
         style: const TextStyle(
           color: ColorsManager.kWhiteColor,
         ),

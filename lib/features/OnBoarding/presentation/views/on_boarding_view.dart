@@ -24,7 +24,9 @@ class _OnBoardingViewState extends State<OnBoardingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: OnboardingViewBody(isVisible: _isVisible),
+      body: OnboardingViewBody(
+        isVisible: _isVisible,
+      ),
     );
   }
 }

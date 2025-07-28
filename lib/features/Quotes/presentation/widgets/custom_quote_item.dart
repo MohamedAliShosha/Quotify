@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:starter_template/core/functions/show_snack_bar.dart';
 import 'package:starter_template/core/utils/app_styles.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
@@ -24,6 +25,7 @@ class _CustomQuoteItemState extends State<CustomQuoteItem> {
   void toggleSave() {
     if (!isSaved) {
       BlocProvider.of<SaveQuotesCubit>(context).saveQuotes(widget.quoteModel);
+      showSnackBar(context, message: 'Quote Saved Successfully!');
       BlocProvider.of<ReadQuotesCubit>(context).readAllQuotes();
       setState(() {
         isSaved = true;

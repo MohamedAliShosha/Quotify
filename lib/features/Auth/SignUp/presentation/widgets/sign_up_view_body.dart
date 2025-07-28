@@ -99,7 +99,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     CustomEmailAndPasswordTextFormField(
                       controller: _userNameController,
                       onSaved: (value) {
-                        userName = value;
+                        userName = value?.trim();
                       },
                       labelText: 'Enter your username',
                       hintText: 'Username',
@@ -110,7 +110,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                     CustomEmailAndPasswordTextFormField(
                       controller: _emailController,
                       onSaved: (value) {
-                        email = value;
+                        email = value?.trim();
                       },
                       labelText: 'Enter your email',
                       hintText: 'Email',
@@ -139,7 +139,7 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       obscuredText:
                           !isPasswordVisible, // If the isPasswordVisible is true it will be false and the password is hidden
                       onChanged: (data) {
-                        password = data;
+                        password = data.trim();
                       },
                       hintText: 'Password',
                     ),
