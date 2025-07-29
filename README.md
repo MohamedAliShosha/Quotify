@@ -142,6 +142,7 @@ assets/
 └── images/                           # App image                   
 └── fonts/                            # App fonts 
 └── screen_shots/                     # screen shots 
+```
 
   
 **Key Points:**
