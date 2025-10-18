@@ -65,8 +65,7 @@
 - Quote text in quotation marks.
 - Author name below (e.g., Dr. Seuss, Steve Jobs).
 - A bookmark icon to save quotes.
- - Bottom navigation bar with icons for:
- - Clean and structured for readability.
+ - Bottom navigation bar with icons for: Clean and structured for readability.
 
 
 <p align="left">
