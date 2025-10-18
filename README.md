@@ -8,54 +8,94 @@
   <img src="assets/screen_shots/quotes_all_views.png" alt="App Overview" width="800"/>
 </p>
 
-## ✨ Features
- 🎨 Onboarding View
- - 🚀 "Get Inspired" tagline with a bold "Get Started" button.
- - ✨ Minimalist design for instant engagement.
-<p align="center">
-  <img src="assets/screen_shots/onboarding_view.png" alt="App Overview" width="800"/>
+## 🎨 Views
+
+🖼️ 1. Onboarding View:
+- Bold centered text: “Get Inspired”.
+- Simple black background for a minimalist and elegant look.
+- A “Get Started” button at the bottom navigates to the authentication flow.
+
+<p align="left">
+  <img src="assets/screen_shots/Onboarding.png" alt="App Overview" height="800"/>
 </p>
 
-** 🔐 Authentication Flow
+##
 
-📲 Sign-In View:
-- 📧 Email and password fields.
-- ↩️ "Don’t have an account?" option.
-<p align="center">
-  <img src="assets/screen_shots/Sign-In View.png" alt="App Overview" width="800"/>
+🔐 2. Sign In View:
+- Greeting text: “Hello, Welcome Back!”.
+- Three input fields: Username, Email, Password.
+- “Sign In” button for logging in.
+- Below it, a small text link: “Don’t have an account? Sign Up.” for navigation to registration.
+
+<p align="left">
+  <img src="assets/screen_shots/Login.png" alt="App Overview" height="800"/>
 </p>
 
-📝 Sign-Up View:
-- 👤 Username, email, and password fields.
-- ➡️ "Sign Up" button with "Sign In" redirect.
-<p align="center">
-  <img src="assets/screen_shots/Sign-up View.png" alt="App Overview" width="800"/>
+##
+
+📝 3. Sign Up View:
+- Greeting text: “Hello, Welcome to Quote!”.
+- Three input fields: Username, Email, Password.
+- “Sign Up” button to create an account.- Bottom has two buttons:
+- A bottom text link: “Already have an account? Sign In.” to go back to login.
+  
+<p align="left">
+  <img src="assets/screen_shots/Sign-up.png" alt="App Overview" height="800"/>
 </p>
 
-🏠 Home View:
-- 💬 Central hub with a "Discover Your Favorite Quotes!" header.
-<p align="center">
-  <img src="assets/screen_shots/home_view.png" alt="App Overview" width="800"/>
+##
+
+🏠 4. Home View:
+- Large centered quote icon and title:
+- “Discover Your Favorite Quotes!”
+- Subtitle: “Browse through inspiring quotes or add your own to share with others.”
+ - Bottom navigation bar with icons for:
+ - 🏠 Home / 💬 Quotes / 🔖 Saved / 👤 Profile
+
+
+<p align="left">
+  <img src="assets/screen_shots/Home.png" alt="App Overview" height="800"/>
 </p>
 
-📜 Quotes Feed:
-- 🎯 Curated quotes from icons like Steve Jobs and Dr. Seuss.
-- 🔄 Scrollable list for seamless browsing.
-<p align="center">
-  <img src="assets/screen_shots/quotes_view.png" alt="App Overview" width="800"/>
+##
+
+💬 5. Quotes View:
+- Scrollable list of quote cards.
+- Each card contains:
+- Quote text in quotation marks.
+- Author name below (e.g., Dr. Seuss, Steve Jobs).
+- A bookmark icon to save quotes.
+ - Bottom navigation bar with icons for:
+ - Clean and structured for readability.
+
+
+<p align="left">
+  <img src="assets/screen_shots/Quotes.png" alt="App Overview" height="800"/>
 </p>
 
-💾 Saved Quotes:
-- 💾 Bookmarked quotes (e.g., Joyce Meyer, Brian Tracy).
-<p align="center">
-  <img src="assets/screen_shots/saved_quotes_view.png" alt="App Overview" width="800"/>
+##
+
+🔖 6. Saved Quotes View:
+- Displays user-saved quotes in the same card format as the Quotes view.
+- Each card shows quote text, author.
+- Same bottom navigation bar for consistency.
+
+
+<p align="left">
+  <img src="assets/screen_shots/Saved.png" alt="App Overview" height="800"/>
 </p>
 
-👤 Profile View:
-- 📛 User details (name, email).
-- 🚪 Logout button.
-<p align="center">
-  <img src="assets/screen_shots/profile_view.png" alt="App Overview" width="800"/>
+##
+
+👤 7. Profile View:
+- Shows user avatar placeholder at the top.
+- Displays username and email in separate cards or fields.
+- Logout button below for signing out.
+- Minimal black-and-white design maintaining the app’s theme.
+
+
+<p align="left">
+  <img src="assets/screen_shots/Profile.png" alt="App Overview" height="800"/>
 </p>
 
 ## 🛠️ Tech Stack
