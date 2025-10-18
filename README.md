@@ -74,7 +74,7 @@
 ## 🏗️ Architecture
   - 🧩 MVVM pattern.
   - 📡 REST API integration.
-  - 💽 Local caching (Hive).
+  - 💽 Local storage (Hive).
 
 ```
 lib/
