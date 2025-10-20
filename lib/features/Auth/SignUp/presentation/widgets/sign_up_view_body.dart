@@ -8,9 +8,9 @@ import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/core/widgets/custom_email_and_password_text_form_field.dart';
-import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_header_text.dart';
 import 'package:starter_template/features/auth/SignUp/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:starter_template/features/auth/SignUp/presentation/widgets/custom_redirect_row.dart';
+import 'package:starter_template/features/auth/sign_in/presentation/widgets/custom_header_text.dart';
 import 'package:starter_template/features/profile/presentation/manager/user_data/user_data_cubit.dart';
 
 // ignore: must_be_immutable
@@ -166,7 +166,11 @@ class _SignUpViewBodyState extends State<SignUpViewBody> {
                       buttonTitle: 'Sign Up',
                     ),
                     const SizedBox(height: 10),
-                    const CustomRedirectRow(
+                    CustomRedirectRow(
+                      onTap: () {
+                        GoRouter.of(context)
+                            .pushReplacement(AppRouter.kSignInView);
+                      },
                       redirectButtonText: 'Sign In',
                       redirectText: 'Already have an account?',
                     ),

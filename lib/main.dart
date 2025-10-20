@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:starter_template/core/utils/api_service.dart';
 import 'package:starter_template/core/utils/app_initializers.dart';
@@ -63,5 +64,7 @@ void main() async {
   AppInitializers.registerQuotesModelAdapter();
   await AppInitializers.openUserBox();
   await AppInitializers.openSavedQuotesBox();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+
   runApp(const QuotesApp());
 }

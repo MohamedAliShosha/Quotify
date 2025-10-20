@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:starter_template/features/auth/SignIn/data/repos/Sign_Up_Repos/sign_up_repo_implement.dart';
-import 'package:starter_template/features/auth/SignIn/presentation/views/sign_in_view.dart';
+import 'package:starter_template/features/auth/SignUp/data/repos/sign_up_repo_implement.dart';
 import 'package:starter_template/features/auth/SignUp/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:starter_template/features/auth/SignUp/presentation/views/sign_up_view.dart';
+import 'package:starter_template/features/auth/sign_in/presentation/views/sign_in_view.dart';
 import 'package:starter_template/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:starter_template/features/home/presentation/views/home_view.dart';
 import 'package:starter_template/features/profile/presentation/views/profile_view.dart';

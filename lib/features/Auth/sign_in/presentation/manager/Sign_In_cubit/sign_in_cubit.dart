@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_template/features/auth/SignIn/data/repos/sign_in_repo.dart';
+import 'package:starter_template/features/auth/sign_in/data/repos/sign_in_repo.dart';
 part 'sign_in_state.dart';
 
 class SignInCubit extends Cubit<SignInState> {

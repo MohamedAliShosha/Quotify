@@ -7,9 +7,9 @@ import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
 import 'package:starter_template/core/widgets/custom_button.dart';
 import 'package:starter_template/core/widgets/custom_email_and_password_text_form_field.dart';
-import 'package:starter_template/features/auth/SignIn/presentation/manager/Sign_In_cubit/sign_in_cubit.dart';
-import 'package:starter_template/features/auth/SignIn/presentation/widgets/custom_header_text.dart';
 import 'package:starter_template/features/auth/SignUp/presentation/widgets/custom_redirect_row.dart';
+import 'package:starter_template/features/auth/sign_in/presentation/manager/Sign_In_cubit/sign_in_cubit.dart';
+import 'package:starter_template/features/auth/sign_in/presentation/widgets/custom_header_text.dart';
 import 'package:starter_template/features/profile/presentation/manager/user_data/user_data_cubit.dart';
 
 class SignInViewBody extends StatefulWidget {
@@ -155,7 +155,11 @@ class _SignInViewBodyState extends State<SignInViewBody> {
                       buttonTitle: 'Sign In',
                     ),
                     const SizedBox(height: 10),
-                    const CustomRedirectRow(
+                    CustomRedirectRow(
+                        onTap: () {
+                          GoRouter.of(context)
+                              .pushReplacement(AppRouter.kSignUpView);
+                        },
                         redirectText: 'don\'t have an account?',
                         redirectButtonText: 'Sign Up'),
                   ],
