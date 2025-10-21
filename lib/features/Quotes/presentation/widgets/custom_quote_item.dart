@@ -7,6 +7,8 @@ import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
 import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
 import 'package:starter_template/features/saved_quotes/presentation/manager/save_quotes/save_quotes_cubit.dart';
 
+/// A custom widget to display a single quote card
+/// It allows saving/unsaving the quote using a bookmark icon.
 class CustomQuoteItem extends StatefulWidget {
   const CustomQuoteItem({
     super.key,
@@ -20,17 +22,41 @@ class CustomQuoteItem extends StatefulWidget {
 }
 
 class _CustomQuoteItemState extends State<CustomQuoteItem> {
+  /// Track whether the current quote is saved or not
   bool isSaved = false;
 
-  void toggleSave() {
-    if (!isSaved) {
-      BlocProvider.of<SaveQuotesCubit>(context).saveQuotes(widget.quoteModel);
-      showSnackBar(context, message: 'Quote Saved Successfully!');
-      BlocProvider.of<ReadQuotesCubit>(context).readAllQuotes();
-      setState(() {
-        isSaved = true;
-      });
+  @override
+  void initState() {
+    super.initState();
+
+    // Check the initial save state of the quote when the widget is built
+    final saveCubit = BlocProvider.of<SaveQuotesCubit>(context);
+    isSaved = saveCubit.isQuoteSaved(widget.quoteModel);
+  }
+
+  /// Handle saving or unsaving a quote when the icon is tapped
+  void toggleSave() async {
+    final saveCubit = BlocProvider.of<SaveQuotesCubit>(context);
+    final readCubit = BlocProvider.of<ReadQuotesCubit>(context);
+
+    // If already saved → delete it
+    if (isSaved) {
+      await saveCubit.deleteQuote(widget.quoteModel);
+      showSnackBar(context, message: 'Quote removed from saved!');
     }
+    // Otherwise → save it
+    else {
+      await saveCubit.saveQuotes(widget.quoteModel);
+      showSnackBar(context, message: 'Quote saved successfully!');
+    }
+
+    // Refresh saved quotes list (to update Saved Quotes screen)
+    readCubit.readAllQuotes();
+
+    // Update UI immediately
+    setState(() {
+      isSaved = !isSaved;
+    });
   }
 
   @override
@@ -43,6 +69,7 @@ class _CustomQuoteItemState extends State<CustomQuoteItem> {
       ),
       child: Column(
         children: [
+          /// Quote icon at the top
           Padding(
             padding: const EdgeInsets.only(bottom: 4),
             child: Row(
@@ -56,28 +83,37 @@ class _CustomQuoteItemState extends State<CustomQuoteItem> {
               ],
             ),
           ),
+
+          /// Quote text, author name, and save icon
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              /// Quote text
               Text(
                 widget.quoteModel.quote ?? 'There is No Quote Available Now',
                 style: AppStyles.styleBoldBlack18,
               ),
+
               const SizedBox(height: 4),
+
+              /// Author + Bookmark icon row
               Row(
                 children: [
+                  /// Author name
                   Text(
                     widget.quoteModel.author ?? 'There is No Author Available',
                     style: AppStyles.styleBoldGrey18,
                   ),
                   const Spacer(),
+
+                  /// Save / Unsave icon
                   Padding(
                     padding: const EdgeInsets.only(right: 12),
                     child: IconButton(
                       onPressed: toggleSave,
-                      icon: isSaved
-                          ? const Icon(Icons.bookmark)
-                          : const Icon(Icons.bookmark_border),
+                      icon: Icon(
+                        isSaved ? Icons.bookmark : Icons.bookmark_border,
+                      ),
                     ),
                   ),
                 ],

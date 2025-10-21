@@ -1,9 +1,14 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:starter_template/features/auth/SignUp/data/repos/sign_up_repo_implement.dart';
-import 'package:starter_template/features/auth/SignUp/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
-import 'package:starter_template/features/auth/SignUp/presentation/views/sign_up_view.dart';
-import 'package:starter_template/features/auth/sign_in/presentation/views/sign_in_view.dart';
+import 'package:starter_template/features/auth/sign_up/data/repos/sign_up_repo_implement.dart';
+import 'package:starter_template/features/auth/sign_up/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
+import 'package:starter_template/features/auth/sign_up/presentation/views/sign_up_view.dart';
+import 'package:starter_template/features/auth/login/data/repos/login_repo_implement.dart';
+import 'package:starter_template/features/auth/login/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:starter_template/features/auth/login/presentation/views/login_view.dart';
+import 'package:starter_template/features/auth/login/service/login_service.dart';
+import 'package:starter_template/features/auth/sign_up/service/sign_up_service.dart';
 import 'package:starter_template/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:starter_template/features/home/presentation/views/home_view.dart';
 import 'package:starter_template/features/profile/presentation/views/profile_view.dart';
@@ -12,7 +17,7 @@ import 'package:starter_template/features/saved_quotes/presentation/views/saved_
 
 abstract class AppRouter {
   // The first thing when creating routers is declaring routes variables
-  static const kSignInView = '/signInView';
+  static const kLoginView = '/loginView';
   static const kSignUpView = '/signUpView';
   static const onBoardingView = '/onBoardingView';
   static const kQuotesView = '/quotesView';
@@ -30,16 +35,31 @@ abstract class AppRouter {
         },
       ),
       GoRoute(
-        path: '/signInView',
+        path: '/loginView',
         builder: (context, state) {
-          return const SignInView();
+          return BlocProvider(
+            create: (context) => LoginCubit(
+              LoginRepoImplement(
+                LoginService(
+                  Dio(),
+                ),
+              ),
+            ),
+            child: const LoginView(),
+          );
         },
       ),
       GoRoute(
         path: '/signUpView',
         builder: (context, state) {
           return BlocProvider(
-            create: (context) => SignUpCubit(SignUpRepoImplement()),
+            create: (context) => SignUpCubit(
+              SignUpRepoImplement(
+                SignUpService(
+                  Dio(),
+                ),
+              ),
+            ),
             child: const SignUpView(),
           );
         },

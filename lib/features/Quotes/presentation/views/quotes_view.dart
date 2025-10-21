@@ -7,7 +7,9 @@ class QuotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: QuotesViewBody(),
+      body: SafeArea(
+        child: QuotesViewBody(),
+      ),
     );
   }
 }

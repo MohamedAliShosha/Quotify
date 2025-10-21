@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
 
 class CustomUserInfoContainer extends StatelessWidget {
   const CustomUserInfoContainer({
@@ -21,7 +20,7 @@ class CustomUserInfoContainer extends StatelessWidget {
         width: double.infinity,
         height: 50,
         decoration: BoxDecoration(
-          color: ColorsManager.kWhiteColor,
+          color: Colors.black,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
@@ -30,7 +29,7 @@ class CustomUserInfoContainer extends StatelessWidget {
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600, // semibold
-              color: ColorsManager.kBlackColor,
+              color: Colors.white,
             ),
           ),
         ),

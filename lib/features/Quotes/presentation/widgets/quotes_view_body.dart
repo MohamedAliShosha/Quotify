@@ -23,32 +23,30 @@ class _QuotesViewBodyState extends State<QuotesViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: BlocBuilder<QuotesCubit, QuotesState>(
-        builder: (context, state) {
-          final isLoading =
-              state is QuotesLoading; // check if the state is loading
+    return BlocBuilder<QuotesCubit, QuotesState>(
+      builder: (context, state) {
+        final isLoading =
+            state is QuotesLoading; // check if the state is loading
 
-          // Either real data or skeleton placeholders
-          // if the state is success display real quotes else display 6 dummy ones with null values
-          final quotes = state is QuotesSuccess
-              ? state.quotes
-              : List.generate(6, (_) => null);
+        // Either real data or skeleton placeholders
+        // if the state is success display real quotes else display 6 dummy ones with null values
+        final quotes = state is QuotesSuccess
+            ? state.quotes
+            : List.generate(6, (_) => null);
 
-          return Skeletonizer(
-            enabled:
-                isLoading, // if isLoading is true the Skeletonizer will be activated
-            child: RefreshIndicator(
-              color: ColorsManager.kPrimaryColor,
-              backgroundColor: ColorsManager.kBlackColor,
-              onRefresh: () => context.read<QuotesCubit>().refreshQuotes(),
-              child: FetchedQuotesListView(
-                quotes: quotes,
-              ),
+        return Skeletonizer(
+          enabled:
+              isLoading, // if isLoading is true the Skeletonizer will be activated
+          child: RefreshIndicator(
+            color: ColorsManager.kPrimaryColor,
+            backgroundColor: ColorsManager.kBlackColor,
+            onRefresh: () => context.read<QuotesCubit>().refreshQuotes(),
+            child: FetchedQuotesListView(
+              quotes: quotes,
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 }
