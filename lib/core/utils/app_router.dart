@@ -1,18 +1,19 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:starter_template/features/auth/sign_up/data/repos/sign_up_repo_implement.dart';
+import 'package:starter_template/core/utils/service_locator.dart';
+import 'package:starter_template/features/auth/login/data/repos/login_repo.dart';
+import 'package:starter_template/features/auth/sign_up/data/repos/sign_up_repo.dart';
 import 'package:starter_template/features/auth/sign_up/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
 import 'package:starter_template/features/auth/sign_up/presentation/views/sign_up_view.dart';
-import 'package:starter_template/features/auth/login/data/repos/login_repo_implement.dart';
 import 'package:starter_template/features/auth/login/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:starter_template/features/auth/login/presentation/views/login_view.dart';
-import 'package:starter_template/features/auth/login/service/login_service.dart';
-import 'package:starter_template/features/auth/sign_up/service/sign_up_service.dart';
 import 'package:starter_template/features/onboarding/presentation/views/on_boarding_view.dart';
 import 'package:starter_template/features/home/presentation/views/home_view.dart';
 import 'package:starter_template/features/profile/presentation/views/profile_view.dart';
+import 'package:starter_template/features/quotes/data/repos/quotes_repo.dart';
+import 'package:starter_template/features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
 import 'package:starter_template/features/quotes/presentation/views/quotes_view.dart';
+import 'package:starter_template/features/saved_quotes/presentation/manager/save_quotes/save_quotes_cubit.dart';
 import 'package:starter_template/features/saved_quotes/presentation/views/saved_quotes_view.dart';
 
 abstract class AppRouter {
@@ -39,11 +40,7 @@ abstract class AppRouter {
         builder: (context, state) {
           return BlocProvider(
             create: (context) => LoginCubit(
-              LoginRepoImplement(
-                LoginService(
-                  Dio(),
-                ),
-              ),
+              getIt<LoginRepo>(),
             ),
             child: const LoginView(),
           );
@@ -54,11 +51,7 @@ abstract class AppRouter {
         builder: (context, state) {
           return BlocProvider(
             create: (context) => SignUpCubit(
-              SignUpRepoImplement(
-                SignUpService(
-                  Dio(),
-                ),
-              ),
+              getIt<SignUpRepo>(),
             ),
             child: const SignUpView(),
           );
@@ -67,7 +60,19 @@ abstract class AppRouter {
       GoRoute(
         path: '/homeView',
         builder: (context, state) {
-          return const HomeView();
+          return MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => QuotesCubit(
+                  getIt<QuotesRepo>(),
+                ),
+              ),
+              BlocProvider(
+                create: (context) => SaveQuotesCubit(),
+              ),
+            ],
+            child: const HomeView(),
+          );
         },
       ),
       GoRoute(
@@ -85,7 +90,10 @@ abstract class AppRouter {
       GoRoute(
         path: '/savedQuotesView',
         builder: (context, state) {
-          return const SavedQuotesView();
+          return BlocProvider(
+            create: (context) => SaveQuotesCubit(),
+            child: const SavedQuotesView(),
+          );
         },
       ),
     ],

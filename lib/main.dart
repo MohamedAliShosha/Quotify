@@ -1,18 +1,14 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_template/core/utils/api_service.dart';
 import 'package:starter_template/core/utils/app_initializers.dart';
 import 'package:starter_template/core/utils/app_router.dart';
 import 'package:starter_template/core/utils/colors_manager.dart';
+import 'package:starter_template/core/utils/service_locator.dart';
 import 'package:starter_template/core/utils/shared_pref_helper.dart';
 import 'package:starter_template/core/utils/shared_pref_keys.dart';
 import 'package:starter_template/core/utils/simple_bloc_observer.dart';
-import 'package:starter_template/features/quotes/data/repos/quotes_repo_implement.dart';
-import 'package:starter_template/features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
 import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/save_quotes/save_quotes_cubit.dart';
 
 Future<void> checkIfUserIsLoggedIn() async {
   // Getting userToken and storing it in a variable
@@ -34,18 +30,6 @@ class QuotesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => QuotesCubit(
-            QuotesRepoImplement(
-              ApiServices(
-                Dio(),
-              ),
-            ),
-          ),
-        ),
-        BlocProvider(
-          create: (context) => SaveQuotesCubit(),
-        ),
         BlocProvider(
           create: (context) => ReadQuotesCubit(),
         ),
@@ -70,6 +54,7 @@ void main() async {
   AppInitializers.registerQuotesModelAdapter();
   await AppInitializers.openSavedQuotesBox();
   await checkIfUserIsLoggedIn();
+  setUpGetIt();
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
 
   runApp(const QuotesApp());
