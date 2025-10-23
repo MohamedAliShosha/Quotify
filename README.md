@@ -105,7 +105,6 @@
 
 🌐 Backend
 - API: [Rest API].
-- Authentication: Firebase.
 - Database: Hive (for saved quotes).
 
 
@@ -113,7 +112,7 @@
 ## 🏗️ Architecture
   - 🧩 MVVM pattern.
   - 📡 REST API integration.
-  - 💽 Local storage (Hive).
+  - 💽 Local storage (Hive, Shared Prefrences).
 
 ```
 lib/
