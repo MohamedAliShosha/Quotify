@@ -10,7 +10,7 @@
 
 ## 🎨 Views
 
-🖼️ Onboarding View:
+🖼️ **Onboarding View:**
 - Bold centered text: “Get Inspired”.
 - Simple black background for a minimalist and elegant look.
 - A “Get Started” button at the bottom navigates to the authentication flow.
@@ -21,7 +21,7 @@
 
 ##
 
-🔐 Sign In View:
+🔐 **Sign-In View:**
 - Greeting text: “Hello, Welcome Back!”.
 - Three input fields: Username, Email, Password.
 - “Sign In” button for logging in.
@@ -33,7 +33,7 @@
 
 ##
 
-📝 Sign Up View:
+📝 **Sign-Up View:**
 - Greeting text: “Hello, Welcome to Quote!”.
 - Three input fields: Username, Email, Password.
 - “Sign Up” button to create an account.- Bottom has two buttons:
@@ -45,7 +45,7 @@
 
 ##
 
-🏠 Home View:
+🏠 **Home View:**
 - Large centered quote icon and title:
 - “Discover Your Favorite Quotes!”
 - Subtitle: “Browse through inspiring quotes or add your own to share with others.”
@@ -59,7 +59,7 @@
 
 ##
 
-💬 Quotes View:
+💬 **Quotes View:**
 - Scrollable list of quote cards.
 - Each card contains:
 - Quote text in quotation marks.
@@ -74,9 +74,9 @@
 
 ##
 
-🔖 Saved Quotes View:
+🔖 **Saved Quotes View:**
 - Displays user-saved quotes in the same card format as the Quotes view.
-- Each card shows quote text, author.
+- Each card shows a quote, text and, author.
 - Same bottom navigation bar for consistency.
 
 
@@ -86,7 +86,7 @@
 
 ##
 
-👤 Profile View:
+👤 **Profile View:**
 - Shows user avatar placeholder at the top.
 - Displays username and email in separate cards or fields.
 - Logout button below for signing out.
