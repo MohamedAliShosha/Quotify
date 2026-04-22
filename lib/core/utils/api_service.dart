@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
-import 'package:starter_template/core/utils/constants.dart';
+import 'constants.dart';
 
 class ApiServices {
-  final String _baseUrl = Constants.baseUrl;
+  final String _baseUrl = Constants.quotesBaseUrl;
   final Dio _dio;
 
   ApiServices(this._dio);
