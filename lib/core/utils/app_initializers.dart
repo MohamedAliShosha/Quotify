@@ -1,6 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:starter_template/core/utils/constants.dart';
-import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
+import 'constants.dart';
+import '../../features/quotes/data/models/quotes_model.dart';
 
 abstract class AppInitializers {
   static Future<void> initializeHive() async {
