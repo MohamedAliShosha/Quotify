@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:starter_template/core/utils/app_router.dart';
-import 'package:starter_template/core/widgets/build_snack_bar.dart';
-import 'package:starter_template/features/auth/login/presentation/manager/login_cubit/login_cubit.dart';
+import '../../../../../core/utils/app_router.dart';
+import '../../../../../core/widgets/build_snack_bar.dart';
+import '../manager/login_cubit/login_cubit.dart';
 
 class LoginBlocListener extends StatelessWidget {
   const LoginBlocListener({super.key});

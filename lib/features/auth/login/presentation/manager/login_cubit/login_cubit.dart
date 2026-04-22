@@ -1,6 +1,6 @@
-import 'package:starter_template/core/utils/shared_pref_helper.dart';
-import 'package:starter_template/core/utils/shared_pref_keys.dart';
-import 'package:starter_template/features/auth/login/data/models/login_api_error_model.dart';
+import '../../../../../../core/utils/shared_pref_helper.dart';
+import '../../../../../../core/utils/shared_pref_keys.dart';
+import '../../../data/models/login_api_error_model.dart';
 
 import '../../../data/models/login_request_body.dart';
 import '../../../data/models/login_response.dart';

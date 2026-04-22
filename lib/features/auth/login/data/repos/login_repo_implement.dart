@@ -1,4 +1,4 @@
-import 'package:starter_template/features/auth/login/service/login_service.dart';
+import '../../service/login_service.dart';
 
 import '../models/login_api_error_model.dart';
 

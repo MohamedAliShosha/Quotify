@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/features/auth/sign_up/presentation/widgets/dont_have_account.dart';
-import 'package:starter_template/features/auth/login/presentation/widgets/custom_header_text.dart';
-import 'package:starter_template/features/auth/login/presentation/widgets/login_form.dart';
+import '../../../sign_up/presentation/widgets/dont_have_account.dart';
+import 'custom_header_text.dart';
+import 'login_form.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});

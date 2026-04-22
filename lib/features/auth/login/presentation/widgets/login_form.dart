@@ -1,12 +1,12 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_template/core/widgets/app_text_form_field.dart';
-import 'package:starter_template/core/widgets/app_button.dart';
-import 'package:starter_template/core/widgets/password_text_field.dart';
-import 'package:starter_template/features/auth/login/data/models/login_request_body.dart';
-import 'package:starter_template/features/auth/login/presentation/manager/login_cubit/login_cubit.dart';
-import 'package:starter_template/features/auth/login/presentation/widgets/login_bloc_listener.dart';
+import '../../../../../core/widgets/app_text_form_field.dart';
+import '../../../../../core/widgets/app_button.dart';
+import '../../../../../core/widgets/password_text_field.dart';
+import '../../data/models/login_request_body.dart';
+import '../manager/login_cubit/login_cubit.dart';
+import 'login_bloc_listener.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({super.key});
@@ -70,6 +70,10 @@ class _LoginFormState extends State<LoginForm> {
                             password: passwordController.text.trim(),
                           ),
                         );
+                  } else {
+                    setState(() {
+                      autovalidateMode = AutovalidateMode.always;
+                    });
                   }
                 },
                 buttonTitle: 'Sign In',
