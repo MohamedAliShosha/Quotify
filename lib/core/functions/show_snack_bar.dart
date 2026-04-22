@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
+import '../utils/colors_manager.dart';
 
 void showSnackBar(BuildContext context, {required String message}) {
   ScaffoldMessenger.of(context).showSnackBar(
