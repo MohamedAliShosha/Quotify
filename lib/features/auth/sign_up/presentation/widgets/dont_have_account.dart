@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:starter_template/core/utils/app_router.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
+import '../../../../../core/utils/app_router.dart';
+import '../../../../../core/utils/colors_manager.dart';
 
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({

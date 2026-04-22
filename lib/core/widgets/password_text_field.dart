@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/core/widgets/app_text_form_field.dart';
+import '../utils/colors_manager.dart';
+import 'app_text_form_field.dart';
 
 class PasswordTextField extends StatefulWidget {
   const PasswordTextField({
