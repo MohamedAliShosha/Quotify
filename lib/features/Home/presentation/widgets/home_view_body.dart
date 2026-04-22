@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/core/utils/app_styles.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
+import '../../../../core/utils/app_styles.dart';
+import '../../../../core/utils/colors_manager.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({

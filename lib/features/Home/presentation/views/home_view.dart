@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_template/core/functions/build_bottom_nav_bar_item.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/features/home/presentation/widgets/home_view_body.dart';
-import 'package:starter_template/features/profile/presentation/views/profile_view.dart';
-import 'package:starter_template/features/quotes/presentation/views/quotes_view.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
-import 'package:starter_template/features/saved_quotes/presentation/views/saved_quotes_view.dart';
+import '../../../../core/functions/build_bottom_nav_bar_item.dart';
+import '../../../../core/utils/colors_manager.dart';
+import '../widgets/home_view_body.dart';
+import '../../../profile/presentation/views/profile_view.dart';
+import '../../../quotes/presentation/views/quotes_view.dart';
+import '../../../saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
+import '../../../saved_quotes/presentation/views/saved_quotes_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
