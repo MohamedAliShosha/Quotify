@@ -34,13 +34,13 @@
 ##
 
 📝 **Sign-Up View:**
-- Greeting text: “Hello, Welcome to Quote!”.
+- Greeting text: “Hello, Welcome to Quote!”
 - Three input fields: Username, Email, Password.
 - “Sign Up” button to create an account.- Bottom has two buttons:
 - A bottom text link: “Already have an account? Sign In.” to go back to login.
   
 <p align="left">
-  <img src="assets/screen_shots/Sign-up.png" alt="App Overview" height="800"/>
+  <img src="assets/screen_shots/Sign_up.png" alt="App Overview" height="800"/>
 </p>
 
 ##
