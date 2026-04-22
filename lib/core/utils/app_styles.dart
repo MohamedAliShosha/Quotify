@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
+import 'colors_manager.dart';
 
 abstract class AppStyles {
   static const styleBoldBlack18 = TextStyle(

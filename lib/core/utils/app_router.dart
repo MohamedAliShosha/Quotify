@@ -1,20 +1,20 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:starter_template/core/utils/service_locator.dart';
-import 'package:starter_template/features/auth/login/data/repos/login_repo.dart';
-import 'package:starter_template/features/auth/sign_up/data/repos/sign_up_repo.dart';
-import 'package:starter_template/features/auth/sign_up/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
-import 'package:starter_template/features/auth/sign_up/presentation/views/sign_up_view.dart';
-import 'package:starter_template/features/auth/login/presentation/manager/login_cubit/login_cubit.dart';
-import 'package:starter_template/features/auth/login/presentation/views/login_view.dart';
-import 'package:starter_template/features/onboarding/presentation/views/on_boarding_view.dart';
-import 'package:starter_template/features/home/presentation/views/home_view.dart';
-import 'package:starter_template/features/profile/presentation/views/profile_view.dart';
-import 'package:starter_template/features/quotes/data/repos/quotes_repo.dart';
-import 'package:starter_template/features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
-import 'package:starter_template/features/quotes/presentation/views/quotes_view.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/save_quotes/save_quotes_cubit.dart';
-import 'package:starter_template/features/saved_quotes/presentation/views/saved_quotes_view.dart';
+import 'service_locator.dart';
+import '../../features/auth/login/data/repos/login_repo.dart';
+import '../../features/auth/sign_up/data/repos/sign_up_repo.dart';
+import '../../features/auth/sign_up/presentation/manager/sign_up_cubit/sign_up_cubit.dart';
+import '../../features/auth/sign_up/presentation/views/sign_up_view.dart';
+import '../../features/auth/login/presentation/manager/login_cubit/login_cubit.dart';
+import '../../features/auth/login/presentation/views/login_view.dart';
+import '../../features/onboarding/presentation/views/on_boarding_view.dart';
+import '../../features/home/presentation/views/home_view.dart';
+import '../../features/profile/presentation/views/profile_view.dart';
+import '../../features/quotes/data/repos/quotes_repo.dart';
+import '../../features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
+import '../../features/quotes/presentation/views/quotes_view.dart';
+import '../../features/saved_quotes/presentation/manager/save_quotes/save_quotes_cubit.dart';
+import '../../features/saved_quotes/presentation/views/saved_quotes_view.dart';
 
 abstract class AppRouter {
   // The first thing when creating routers is declaring routes variables
