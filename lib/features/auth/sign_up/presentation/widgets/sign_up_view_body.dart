@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/features/auth/sign_up/presentation/widgets/already_have_account.dart';
+import 'already_have_account.dart';
 
-import 'package:starter_template/features/auth/sign_up/presentation/widgets/sign_up_form.dart';
-import 'package:starter_template/features/auth/login/presentation/widgets/custom_header_text.dart';
+import 'sign_up_form.dart';
+import '../../../login/presentation/widgets/custom_header_text.dart';
 
 class SignUpViewBody extends StatelessWidget {
   const SignUpViewBody({super.key});

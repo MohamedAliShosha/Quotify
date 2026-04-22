@@ -1,12 +1,12 @@
-import 'package:starter_template/features/auth/sign_up/models/sign_up_api_error_model.dart';
-import 'package:starter_template/features/auth/sign_up/models/sign_up_request_body.dart';
-import 'package:starter_template/features/auth/sign_up/models/sign_up_response_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../data/models/sign_up_api_error_model.dart';
+import '../../../data/models/sign_up_request_body.dart';
+import '../../../data/models/sign_up_response_model.dart';
 
 import '../../../../../../core/utils/shared_pref_helper.dart';
 import '../../../../../../core/utils/shared_pref_keys.dart';
 
 import '../../../data/repos/sign_up_repo.dart';
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 
 part 'sign_up_state.dart';

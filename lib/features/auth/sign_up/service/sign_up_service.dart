@@ -1,5 +1,5 @@
-import 'package:starter_template/features/auth/sign_up/models/sign_up_request_body.dart';
-import 'package:starter_template/features/auth/sign_up/models/sign_up_response_model.dart';
+import '../data/models/sign_up_request_body.dart';
+import '../data/models/sign_up_response_model.dart';
 
 import '../../../../core/utils/constants.dart';
 
@@ -8,7 +8,7 @@ import 'package:retrofit/retrofit.dart';
 
 part 'sign_up_service.g.dart';
 
-@RestApi(baseUrl: Constants.baseUrl)
+@RestApi(baseUrl: Constants.registrationBaseUrl)
 abstract class SignUpService {
   factory SignUpService(Dio dio, {String? baseUrl}) = _SignUpService;
 
