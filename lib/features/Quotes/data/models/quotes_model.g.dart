@@ -42,3 +42,18 @@ class QuotesModelAdapter extends TypeAdapter<QuotesModel> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+QuotesModel _$QuotesModelFromJson(Map<String, dynamic> json) => QuotesModel(
+      quote: json['q'] as String?,
+      author: json['a'] as String?,
+    );
+
+Map<String, dynamic> _$QuotesModelToJson(QuotesModel instance) =>
+    <String, dynamic>{
+      'q': instance.quote,
+      'a': instance.author,
+    };

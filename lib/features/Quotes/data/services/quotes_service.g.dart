@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sign_up_service.dart';
+part of 'quotes_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,13 +8,13 @@ part of 'sign_up_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _SignUpService implements SignUpService {
-  _SignUpService(
+class _QuotesService implements QuotesService {
+  _QuotesService(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://vcare.integration25.com/api';
+    baseUrl ??= 'https://zenquotes.io/api/';
   }
 
   final Dio _dio;
@@ -24,21 +24,19 @@ class _SignUpService implements SignUpService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<SignUpResponseModel> signUp(
-      SignUpRequestBody signUpRequestBody) async {
+  Future<List<QuotesModel>> getQuotes() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(signUpRequestBody.toJson());
-    final _options = _setStreamType<SignUpResponseModel>(Options(
-      method: 'POST',
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<List<QuotesModel>>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          '/auth/register',
+          '/quotes',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -47,10 +45,12 @@ class _SignUpService implements SignUpService {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SignUpResponseModel _value;
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<QuotesModel> _value;
     try {
-      _value = SignUpResponseModel.fromJson(_result.data!);
+      _value = _result.data!
+          .map((dynamic i) => QuotesModel.fromJson(i as Map<String, dynamic>))
+          .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
