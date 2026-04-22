@@ -1,27 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_template/core/utils/app_initializers.dart';
-import 'package:starter_template/core/utils/app_router.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/core/utils/service_locator.dart';
-import 'package:starter_template/core/utils/shared_pref_helper.dart';
-import 'package:starter_template/core/utils/shared_pref_keys.dart';
-import 'package:starter_template/core/utils/simple_bloc_observer.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
+import 'core/utils/app_initializers.dart';
+import 'core/utils/app_router.dart';
+import 'core/utils/colors_manager.dart';
+import 'core/utils/service_locator.dart';
+import 'core/utils/simple_bloc_observer.dart';
+import 'features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
 
-Future<void> checkIfUserIsLoggedIn() async {
-  // Getting userToken and storing it in a variable
-  final userToken =
-      await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
-  // Check if the userToken is not null and not empty
-
-  if (userToken != null && userToken.isNotEmpty) {
-    isLoggedInUser = true;
-  } else {
-    isLoggedInUser = false;
-  }
-}
+import 'core/functions/is_logged_in_user.dart';
 
 class QuotesApp extends StatelessWidget {
   const QuotesApp({super.key});
