@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/features/quotes/presentation/widgets/quotes_view_body.dart';
+import '../widgets/quotes_view_body.dart';
 
 class QuotesView extends StatelessWidget {
   const QuotesView({super.key});

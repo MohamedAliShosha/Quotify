@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/core/functions/build_circular_rounded_rectangle_border.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
+import '../../../../core/functions/build_circular_rounded_rectangle_border.dart';
+import '../../../../core/utils/colors_manager.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({

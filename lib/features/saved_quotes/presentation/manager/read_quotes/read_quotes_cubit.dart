@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:starter_template/core/utils/constants.dart';
-import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_state.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../quotes/data/models/quotes_model.dart';
+import 'read_quotes_state.dart';
 
 class ReadQuotesCubit extends Cubit<ReadQuotesState> {
   ReadQuotesCubit() : super(ReadQuotesInitial());

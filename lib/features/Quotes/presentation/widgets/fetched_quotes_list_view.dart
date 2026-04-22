@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
-import 'package:starter_template/features/quotes/presentation/widgets/custom_quote_item.dart';
+import '../../data/models/quotes_model.dart';
+import 'custom_quote_item.dart';
 
 class FetchedQuotesListView extends StatelessWidget {
   const FetchedQuotesListView({

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:starter_template/core/utils/app_router.dart';
-import 'package:starter_template/core/utils/app_styles.dart';
-import 'package:starter_template/core/utils/shared_pref_keys.dart';
-import 'package:starter_template/core/widgets/app_button.dart';
-import 'package:starter_template/features/onboarding/presentation/widgets/custom_animated_opacity.dart';
+import '../../../../core/utils/app_router.dart';
+import '../../../../core/utils/app_styles.dart';
+import '../../../../core/utils/shared_pref_keys.dart';
+import '../../../../core/widgets/app_button.dart';
+import 'custom_animated_opacity.dart';
 
 class OnboardingViewBody extends StatelessWidget {
   const OnboardingViewBody({

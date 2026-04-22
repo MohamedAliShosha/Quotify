@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
+import '../../../../core/utils/colors_manager.dart';
 
 class CustomProfileCircleAvatar extends StatelessWidget {
   const CustomProfileCircleAvatar({

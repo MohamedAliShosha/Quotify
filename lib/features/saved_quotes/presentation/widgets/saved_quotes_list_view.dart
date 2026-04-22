@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_state.dart';
-import 'package:starter_template/features/saved_quotes/presentation/widgets/custom_saved_quotes_item.dart';
+import '../../../quotes/data/models/quotes_model.dart';
+import '../manager/read_quotes/read_quotes_cubit.dart';
+import '../manager/read_quotes/read_quotes_state.dart';
+import 'custom_saved_quotes_item.dart';
 
 class SavedQuotesListView extends StatelessWidget {
   const SavedQuotesListView({super.key});

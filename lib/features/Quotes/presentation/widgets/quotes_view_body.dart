@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/features/quotes/presentation/manager/quotes_cubit/quotes_cubit.dart';
-import 'package:starter_template/features/quotes/presentation/widgets/fetched_quotes_list_view.dart';
+import '../../../../core/utils/colors_manager.dart';
+import '../manager/quotes_cubit/quotes_cubit.dart';
+import 'fetched_quotes_list_view.dart';
 
 class QuotesViewBody extends StatefulWidget {
   const QuotesViewBody({super.key});

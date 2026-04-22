@@ -1,4 +1,4 @@
-import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
+import '../../../../quotes/data/models/quotes_model.dart';
 
 abstract class ReadQuotesState {}
 

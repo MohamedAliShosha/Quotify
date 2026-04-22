@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/features/saved_quotes/presentation/widgets/saved_quotes_list_view.dart';
+import 'saved_quotes_list_view.dart';
 
 class SavedQuotesViewBody extends StatefulWidget {
   const SavedQuotesViewBody({super.key});

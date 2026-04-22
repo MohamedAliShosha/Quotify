@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
-import 'package:starter_template/core/utils/constants.dart';
-import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
+import '../../../../../core/utils/constants.dart';
+import '../../../../quotes/data/models/quotes_model.dart';
 
 part 'save_quotes_state.dart';
 

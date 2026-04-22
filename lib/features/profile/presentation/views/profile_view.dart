@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:starter_template/core/utils/app_router.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/core/utils/shared_pref_helper.dart';
-import 'package:starter_template/core/utils/shared_pref_keys.dart';
-import 'package:starter_template/core/widgets/build_app_bar.dart';
-import 'package:starter_template/features/profile/presentation/widgets/user_info_row.dart';
+import '../../../../core/utils/app_router.dart';
+import '../../../../core/utils/colors_manager.dart';
+import '../../../../core/utils/shared_pref_helper.dart';
+import '../../../../core/utils/shared_pref_keys.dart';
+import '../../../../core/widgets/build_app_bar.dart';
+import '../widgets/user_info_row.dart';
 import '../widgets/custom_log_out_alert_dialog.dart';
 import '../widgets/custom_profile_circle_avatar.dart';
 
@@ -82,16 +82,9 @@ class _ProfileViewState extends State<ProfileView> {
 
     return Scaffold(
       appBar: buildAppBar(
-        centerTitle: true,
         titleColor: ColorsManager.kWhiteColor,
         backgroundColor: Colors.black,
         context,
-        leadingWidget: IconButton(
-          onPressed: () => GoRouter.of(context).pop(),
-          icon: const Icon(Icons.arrow_back_ios_new,
-              color: ColorsManager.kWhiteColor),
-        ),
-        title: 'My Profile',
       ),
       body: SafeArea(
         child: SingleChildScrollView(

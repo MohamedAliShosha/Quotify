@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:starter_template/core/functions/show_snack_bar.dart';
-import 'package:starter_template/core/utils/app_styles.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
-import 'package:starter_template/features/quotes/data/models/quotes_model.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
-import 'package:starter_template/features/saved_quotes/presentation/manager/save_quotes/save_quotes_cubit.dart';
+import '../../../../core/functions/show_snack_bar.dart';
+import '../../../../core/utils/app_styles.dart';
+import '../../../../core/utils/colors_manager.dart';
+import '../../data/models/quotes_model.dart';
+import '../../../saved_quotes/presentation/manager/read_quotes/read_quotes_cubit.dart';
+import '../../../saved_quotes/presentation/manager/save_quotes/save_quotes_cubit.dart';
 
 /// A custom widget to display a single quote card
 /// It allows saving/unsaving the quote using a bookmark icon.
