@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/core/functions/build_enabled_border.dart';
-import 'package:starter_template/core/functions/build_focused_border.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
+import '../functions/build_enabled_border.dart';
+import '../functions/build_focused_border.dart';
+import '../utils/colors_manager.dart';
 
 // ignore: must_be_immutable
 class AppTextFormField extends StatefulWidget {

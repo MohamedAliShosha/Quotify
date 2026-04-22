@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:starter_template/core/utils/colors_manager.dart';
+import '../utils/colors_manager.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key, this.title, this.icon, this.onPressed});
